@@ -1,0 +1,211 @@
+databaseChangeLog: 
+- logicalFilePath: incrementales-v0_6 
+    
+- changeSet:
+    id: update data healthcare_professional_specialty
+    author: etrapani
+    changes:
+        - addColumn:
+            tableName: healthcare_professional_specialty
+            columns:
+            - column:
+                name: clinical_specialty_id
+                type: int
+        - addForeignKeyConstraint:
+            baseColumnNames: clinical_specialty_id
+            baseTableName: healthcare_professional_specialty
+            constraintName: FK_healthcare_professional_specialty_clinical_specialty_id
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: clinical_specialty
+            validate: true
+
+- changeSet:
+    id: drop column healthcare_professional_specialty
+    author: etrapani
+    changes:
+    -  dropColumn:  
+        columnName:  description
+        tableName:  healthcare_professional_specialty  
+
+- changeSet: 
+    id: healthcare_professional_specialty-update-nulls
+    comment: Set default null values to clinical_specialty_id
+    author: etrapani
+    context: "!schema-only"
+    changes: 
+        - sql: 
+            sql: |- 
+                UPDATE healthcare_professional_specialty
+                SET clinical_specialty_id = 91 
+                WHERE clinical_specialty_id IS NULL;  
+
+- changeSet:
+    id: addNotNullConstraint-healthcare_professional_specialty_clinical_specialty_id
+    author: etrapani
+    changes:
+    -  addNotNullConstraint:  
+        columnDataType:  int  
+        columnName:  clinical_specialty_id
+        tableName:  healthcare_professional_specialty  
+        validate:  true
+
+- changeSet:
+    id: add_column-data appointment
+    author: etrapani
+    dbms: "!db2"
+    changes:
+    - addColumn:
+        tableName: appointment
+        columns:
+        - column:
+            name: health_insurance_id
+            type: int
+        - column:
+            constraints:
+                nullable: false
+            name: medical_coverage_name
+            type: varchar(255)
+            defaultValue: 'Sumar'
+        - column:
+            constraints:
+                nullable: false
+            name: medical_coverage_affiliate_number
+            type: varchar(150) 
+    - addForeignKeyConstraint:
+        baseColumnNames: health_insurance_id
+        baseTableName: appointment
+        constraintName: FK_appointment_health_insurance_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: rnos
+        referencedTableName: health_insurance
+        validate: true
+
+- changeSet:
+    id: add_column-data appointment
+    author: saguero
+    dbms: db2
+    changes:
+    - addColumn:
+        tableName: appointment
+        columns:
+        - column:
+            name: health_insurance_id
+            type: int
+        - column:
+            constraints:
+                nullable: false
+            name: medical_coverage_name
+            type: varchar(255)
+            defaultValue: 'Sumar'
+        - column:
+            constraints:
+                nullable: false
+            name: medical_coverage_affiliate_number
+            type: varchar(150)
+            defaultValue: -1
+    - addForeignKeyConstraint:
+        baseColumnNames: health_insurance_id
+        baseTableName: appointment
+        constraintName: FK_appointment_health_insurance_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: rnos
+        referencedTableName: health_insurance
+        validate: true
+
+- changeSet:
+    id: set-default-value-person_id-users
+    comment: Set default null values to users
+    author: lmanterola
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE users SET person_id = -1 WHERE person_id IS NULL;
+
+
+- changeSet:
+    id: add-constraints-person_id-users
+    author: lmanterola
+    changes:
+    -  addNotNullConstraint:  
+        columnDataType:  int  
+        columnName:  person_id
+        tableName:  users  
+        validate:  true
+
+
+- changeSet:
+    id: add-constraints-person_id-healthcare_professional
+    author: lmanterola
+    changes:
+    -  addNotNullConstraint:  
+        columnDataType:  int  
+        columnName:  person_id
+        tableName:  healthcare_professional 
+        validate:  true
+        
+- changeSet:       
+    id: add-diary-deleteable-audit
+    author: gmurgolo
+    changes:
+    - addColumn:
+        tableName: diary
+        columns:
+        - column:
+            constraints:
+                nullable: false
+            name: deleted
+            type: boolean
+            defaultValue: ${boolean.false}  
+        - column:
+            constraints:
+                nullable: true
+            name: deleted_by
+            type: int
+            defaultValue: -1
+        - column:
+            constraints:
+                nullable: true
+            name: deleted_on
+            type: datetime
+            defaultValueDate: ${date.now} 
+
+- changeSet:
+    id: drop column is_medical_doctor
+    author: lmanterola
+    changes:
+    -  dropColumn:  
+        columnName:  is_medical_doctor
+        tableName:  healthcare_professional
+
+- changeSet:  
+    id:  dropNotNullConstraint-appointment-medical_coverage_name
+    author:  saguero  
+    dbms: "!mssql" 
+    changes:  
+    -  dropNotNullConstraint:  
+        columnName:  medical_coverage_name  
+        tableName:  appointment       
+
+- changeSet:  
+    id:  dropNotNullConstraint-appointment-medical_coverage_name-mssql
+    author: saguero 
+    dbms: mssql
+    changes:
+    -  dropNotNullConstraint:
+        columnName: medical_coverage_name
+        columnDataType: varchar(255)
+        tableName: appointment
+
+- changeSet:
+    id: healthcare_professional_specialty-unique-constraint
+    author: etrapani
+    changes:
+        - addUniqueConstraint:
+            tableName: healthcare_professional_specialty
+            columnNames: healthcare_professional_id, professional_specialty_id, clinical_specialty_id
+            constraintName: UQ_healthcare_professional_hp_id_ps_id_cs_id

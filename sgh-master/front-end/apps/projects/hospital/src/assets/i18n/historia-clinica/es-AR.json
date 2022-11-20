@@ -1,0 +1,92 @@
+{
+	"historia-clinica": {
+		"reference-request-list": {
+			"CARE_LINE": "Línea de cuidado",
+			"SPECIALTY": "Especialidad",
+			"PROBLEMS": "Problemas"
+		},
+		"new-consultation-expansion-section": {
+			"RECOMMEND": "Recomendado"
+		},
+		"concept-typeahead-search": {
+			"AT_LEAST_THREE_CHARACTERS_MESSAGE": "Ingrese al menos 3 caracteres"
+		},
+		"summary-card": {
+			"evolution-notes-filter": {
+				"filterFieldIsRequiredWhenInputIsSet": "Debe seleccionar un tipo de filtro",
+				"filterInputIsRequiredWhenDateIsSelected": "Debe seleccionar una fecha",
+				"generalDateError": "La fecha ingresada no es válida"
+			},
+			"alergias": {
+				"TOOLTIP": "Agregar alergia"
+			},
+			"factores-de-riesgo": {
+				"TOOLTIP": "Actualizar factores de riesgo"
+			},
+			"datos-antropometricos": {
+				"TOOLTIP": "Agregar información antropométrica"
+			},
+			"vacunas": {
+				"TOOLTIP": "Agregar vacuna"
+			}
+		},
+		"procedimientos": {
+			"FECHA": "Fecha",
+			"PROCEDIMIENTO": "Procedimiento"
+		},
+		"snowstorm": {
+			"SERVICE_NOT_AVAILABLE": "Hubo un problema al obtener los conceptos. Por favor, intente más tarde o contacte con el administrador.",
+			"ERROR_MESSAGE_DESCRIPTION": "Mensaje",
+			"CONCEPTS_COULD_NOT_BE_OBTAINED": "Los conceptos de SNOMED no pudieron ser obtenidos."
+		},
+		"factores-de-riesgo-form": {
+			"TITLE": "Factores de Riesgo",
+			"NAME": "factores de riesgo",
+			"HEART_RATE": "Frecuencia cardíaca (/min)",
+			"RESPIRATORY_RATE": "Frecuencia respiratoria (/min)",
+			"TEMPERATURE": "Temperatura corporal",
+			"BLOOD_OXYGEN_SATURATION": "Saturación de oxigeno (%)",
+			"SYSTOLIC_BLOOD_PRESSURE": "Tensión sistólica (mm)",
+			"DIASTOLIC_BLOOD_PRESSURE": "Tensión diastólica (mm)",
+			"BLOOD_GLUCOSE": "Glucemia (mg/dl)",
+			"GLYCOSYLATED_HEMOGLOBIN": "Hemoglobina glicosilada (%)",
+			"CARDIOVASCULAR_RISK": "Riesgo cardiovascular (%)"
+		},
+		"include-previous-data-question": {
+			"DESCRIPTION": "Últimos {{dataName}} cargados previamente el {{date}}",
+			"QUESTION": "¿Desea incluirlos en la consulta?",
+			"ADD": "SI, INCLUIRLOS",
+			"DISCARD": "NO, DESCARTARLOS"
+		},
+		"template-concept-search": {
+			"TEMPLATE_OPTION_GROUP": "Plantillas",
+			"CONCEPT_OPTION_GROUP": "Conceptos"
+		},
+		"new-consultation-add-reason-form": {
+			"ADD_REASON": "Agregar motivo",
+			"REASON": "motivo",
+			"SEARCH_PLACEHOLDER": "Buscar motivo"
+		},
+		"new-consultation-procedure-form": {
+			"ADD_PROCEDURE": "Agregar procedimiento",
+			"PROCEDURE": "Procedimiento",
+			"SEARCH_PLACEHOLDER": "Buscar procedimiento",
+			"TYPE": "Tipo de procedimiento",
+			"DATE": "Fecha"
+		},
+		"new-consultation-allergy-form": {
+			"ADD": "Agregar alergia",
+			"ALLERGY": "Alergia",
+			"SEARCH_PLACEHOLDER": "Buscar alergia",
+			"CRITICALITY": "Criticidad"
+		},
+		"new-consultation-medication-form": {
+			"ADD": "Agregar medicación",
+			"CONCEPT_LABEL": "Medicación habitual",
+			"SEARCH_PLACEHOLDER": "Buscar medicación",
+			"MEDICATION": "Medicación",
+			"OBSERVACIONES": "Observaciones",
+			"SUSPENDIDO": "Suspendido"
+		}
+	}
+}

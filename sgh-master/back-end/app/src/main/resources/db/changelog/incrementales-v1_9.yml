@@ -1,0 +1,52 @@
+databaseChangeLog: 
+    - logicalFilePath: incrementales-v1_9 
+
+    - changeSet:
+        id: drop-column-healthcare_professional_id-triage
+        author: nayerdi
+        dbms: "!mssql"
+        changes:
+            dropColumn:
+                tableName: triage
+                columnName: healthcare_professional_id
+
+#------------------------- Ajuste drop-column-with-FK para coincidir con MSSQL -----------------------
+    - changeSet:
+        id: drop-column-healthcare_professional_id-triage
+        author: saguero
+        dbms: mssql
+        changes:
+        - dropForeignKeyConstraint:
+            baseTableName: triage
+            constraintName: FK_triage_healthcare_professional_id
+        - dropColumn:
+                tableName: triage
+                columnName: healthcare_professional_id
+
+    - changeSet:
+        id: triage-addColumn-doctors_office_id
+        author: tmedina
+        changes:
+            - addColumn:
+                tableName: triage
+                columns:
+                - column:
+                    name: doctors_office_id
+                    type: int
+                    constraints: 
+                        nullable: true
+
+    - changeSet:
+        id: triage-addForeignKeyConstraint-doctors_office_id
+        author: tmedina
+        changes:
+            - addForeignKeyConstraint:
+                baseColumnNames: doctors_office_id
+                baseTableName: triage
+                constraintName: FK_triage_doctors_office_id
+                onDelete: NO ACTION
+                onUpdate: NO ACTION
+                referencedColumnNames: id
+                referencedTableName: doctors_office
+                validate: true
+

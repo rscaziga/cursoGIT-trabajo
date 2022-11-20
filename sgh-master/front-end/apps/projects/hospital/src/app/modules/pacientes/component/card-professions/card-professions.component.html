@@ -1,0 +1,41 @@
+<div fxLayout="column" >
+	<ng-container *ngIf="hasProfessions() else noInfo">
+		<div class="flex-container">
+
+			<mat-list>
+				<div>
+					<strong fxFlex="60%" [translate]="'pacientes.user_data.PROFESSION'"></strong>
+					<strong fxFlex="40%" [translate]="'pacientes.user_data.SPECIALTY'"></strong>
+				</div>
+				<mat-list>
+
+					<div *ngFor="let item of ownProfessionsAndSpecialties" class="data">
+
+
+						<div fxFlex="60%">
+							<div id="profession" fxLayout="row" fxLayoutGap="16px">
+								<mat-icon color="primary" fontSet="material-icons-outlined">
+									medical_services</mat-icon>
+								<span>{{item.profession.description}} </span>
+							</div>
+						</div>
+
+						<div fxFlex="40%">
+							<div id="specialty" *ngFor="let item of item.specialties" fxLayout="row" fxLayoutGap="16px">
+								<span>{{item.clinicalSpecialty.name}} </span>
+							</div>
+						</div>
+
+					</div>
+
+				</mat-list>
+			</mat-list>
+		</div>
+
+	</ng-container>
+
+	<ng-template #noInfo>
+		<span class="no-info" [translate]="'pacientes.user_data.WITHOUT_PROFESSIONS'"></span>
+	</ng-template>
+
+</div>

@@ -1,0 +1,53 @@
+@import "../../../../../../../../../assets/styles/variables";
+
+.flex-container, .mat-line.flex-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+span {
+	font-size: $font-size-sm;
+	white-space: pre;
+}
+noAgendaForProfessionalAndSpecialty
+mat-icon.mat-icon-inline {
+	font-size: $font-size-lg;
+}
+
+button {
+	margin-bottom: 15px;
+	margin-left: 22px;
+}
+
+mat-icon.green {
+	color: #27AE60;
+}
+
+span.green {
+	color: #27AE60;
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.date {
+	font-size: 12px;
+	font-weight: 400;
+	color: #A8A8A8;
+}
+
+.change_date_button{
+	border: none;
+    background: none;
+    margin-left: 10px;
+	color: #2687c5;
+	cursor: pointer;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+}
+.document {
+	font-weight:bold;
+	color: #EB5757;
+}

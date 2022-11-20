@@ -1,0 +1,28 @@
+@import "../../../../../../../assets/styles/mixins";
+@import "../../../../../../../assets/styles/mat-mixins";
+
+form {
+
+	@include mat-form-field-background-white;
+
+	.mat-radio-button {
+		@include form-radio-button;
+	}
+
+	mat-form-field {
+		width: 100%;
+	}
+}
+
+section {
+	width: 100%;
+}
+
+.text-danger {
+	color: red;
+}
+
+span.warning{
+	font-style: italic;
+	color: grey;
+}

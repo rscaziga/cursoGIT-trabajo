@@ -1,0 +1,2286 @@
+﻿#Se agregan tablas Datos Maestros para códigos de SNOMED CT
+databaseChangeLog: 
+- logicalFilePath: incrementales-v0_1_3
+- changeSet: 
+    id: observation_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO observation_status (id, description) VALUES('307827002 ', 'Estado de registro (hallazgo)');
+                INSERT INTO observation_status (id, description) VALUES('261420005', 'Preliminar (calificador)');
+                INSERT INTO observation_status (id, description) VALUES('261782000', 'Final (calificador)');
+                INSERT INTO observation_status (id, description) VALUES('18307000', 'Modificado (calificador)');
+                INSERT INTO observation_status (id, description) VALUES('33714007', 'Corregido (calificador)');
+                INSERT INTO observation_status (id, description) VALUES('89925002', 'Cancelado (calificador)');
+                INSERT INTO observation_status (id, description) VALUES('723510000', 'Ingresado por error (calificador)');
+                INSERT INTO observation_status (id, description) VALUES('261665006', 'Desconocido (calificador)');
+ 
+- changeSet: 
+    id: allergy_intolerance_verification_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO allergy_intolerance_verification_status (id, description) VALUES('59156000', 'Confirmado por (calificador)');
+                INSERT INTO allergy_intolerance_verification_status (id, description) VALUES('76104008', 'No confirmado por (calificador)');
+                INSERT INTO allergy_intolerance_verification_status (id, description) VALUES('723511001', 'Refutado (calificador)');
+                INSERT INTO allergy_intolerance_verification_status (id, description) VALUES('723510000', 'Ingresado por error (calificador)');
+                
+- changeSet: 
+    id: allergy_intolerance_clinical_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO allergy_intolerance_clinical_status (id, description) VALUES('55561003', 'Activo (calificador)');  
+                INSERT INTO allergy_intolerance_clinical_status (id, description) VALUES('73425007', 'Inactivo (calificador)');  
+                INSERT INTO allergy_intolerance_clinical_status (id, description) VALUES('723506003', 'Resuelto (calificador)');                  
+
+- changeSet: 
+    id: allergy_intolerance_category-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO allergy_intolerance_category (id, description) VALUES('414285001', 'Alergia alimentaria (hallazgo)');
+                INSERT INTO allergy_intolerance_category (id, description) VALUES('416098002', 'Alergia medicamentosa (hallazgo)');
+                INSERT INTO allergy_intolerance_category (id, description) VALUES('426232007', 'Alergia ambiental (hallazgo)');
+                INSERT INTO allergy_intolerance_category (id, description) VALUES('402591008', 'Alergia a agente biocida (hallazgo)');
+   
+- changeSet: 
+    id: condition_clinical_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO condition_clinical_status (id, description) VALUES('55561003', 'Activo (calificador)'); 
+                INSERT INTO condition_clinical_status (id, description) VALUES('246455001', 'Recidiva (calificador)'); 
+                INSERT INTO condition_clinical_status (id, description) VALUES('263855007', 'Recaída (calificador)'); 
+                INSERT INTO condition_clinical_status (id, description) VALUES('73425007', 'Inactivo (calificador)');  
+                INSERT INTO condition_clinical_status (id, description) VALUES('277022003', 'Remisión (calificador)'); 
+                INSERT INTO condition_clinical_status (id, description) VALUES('723506003', 'Resuelto (calificador)'); 
+
+- changeSet: 
+    id: condition_verification_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO condition_verification_status (id, description) VALUES('76104008', 'No confirmado por (calificador)');
+                INSERT INTO condition_verification_status (id, description) VALUES('5558000', 'Diagnóstico provisional (calificador contextual) (calificador)');
+                INSERT INTO condition_verification_status (id, description) VALUES('47965005', 'Diagnóstico diferencial (calificador)');
+                INSERT INTO condition_verification_status (id, description) VALUES('59156000', 'Confirmado por (calificador)');
+                INSERT INTO condition_verification_status (id, description) VALUES('723511001', 'Refutado (calificador)');
+                INSERT INTO condition_verification_status (id, description) VALUES('723510000', 'Ingresado por error (calificador)');
+                
+- changeSet: 
+    id: condition_problem_type-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO condition_problem_type (id, description) VALUES('55607006', 'Problema (hallazgo)');                 
+
+- changeSet: 
+    id: medication_statement_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO medication_statement_status (id, description) VALUES('55561003', 'Activo (calificador)');
+                INSERT INTO medication_statement_status (id, description) VALUES('255594003', 'Completo (calificador)');
+                INSERT INTO medication_statement_status (id, description) VALUES('723510000', 'Ingresado por error (calificador)');
+                INSERT INTO medication_statement_status (id, description) VALUES('18629005', 'Administración de fármaco o medicamento (procedimiento)');
+                INSERT INTO medication_statement_status (id, description) VALUES('6155003', 'Detenido (calificador)');
+                INSERT INTO medication_statement_status (id, description) VALUES('385655000', 'Suspendido (calificador)');
+                INSERT INTO medication_statement_status (id, description) VALUES('261665006', 'Desconocido (calificador)');
+                INSERT INTO medication_statement_status (id, description) VALUES('266710000', 'Fármacos no ingeridos/tratamiento incompleto (situación)');
+
+- changeSet: 
+    id: inmunization_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO inmunization_status (id, description) VALUES('255594003', 'Completo (calificador)');  
+                INSERT INTO inmunization_status (id, description) VALUES('723510000', 'Ingresado por error (calificador)'); 
+                INSERT INTO inmunization_status (id, description) VALUES('385660001', 'No efectuado (calificador)'); 
+                
+- changeSet: 
+    id: document_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO document_status (id, description) VALUES('445667001', 'Informe preliminar (elemento de registro)');  
+                INSERT INTO document_status (id, description) VALUES('445665009', 'Informe final (elemento de registro)'); 
+                INSERT INTO document_status (id, description) VALUES('445664008', 'Informe enmendado (elemento de registro)');  
+                INSERT INTO document_status (id, description) VALUES('723510000', 'Ingresado por error (calificador)');  
+                
+- changeSet: 
+    id: internment_episode_status-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO internment_episode_status (id, description) VALUES(1, 'Activo');  
+                INSERT INTO internment_episode_status (id, description) VALUES(2, 'Inactivo');  
+
+- changeSet: 
+    id: document_type-metadata
+    author: saguero
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO document_type (id, description) VALUES(1, 'Anamnesis');  
+                INSERT INTO document_type (id, description) VALUES(2, 'Nota de evaluación');  
+                INSERT INTO document_type (id, description) VALUES(3, 'Epicrisis');  
+             
+- changeSet:
+    id: patient-addColumn-identity_verification_status&&coments
+    author: gmurgolo
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: identity_verification_status_id
+            type: smallint
+            constraints:
+                nullable: true  
+        - column:
+            name: comments
+            type: varchar(255)
+            constraints:
+                nullable: true
+        tableName: patient
+    - addForeignKeyConstraint:
+        baseColumnNames: identity_verification_status_id
+        baseTableName: patient
+        constraintName: FK_identity_verification_status_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: identity_verification_status
+        validate: true
+
+
+- changeSet:
+    id: bed-addColumn-bed_number
+    author: lmanterola
+    dbms: "!db2"
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: bed_number
+            type: varchar(50)
+            constraints:
+                nullable: false
+        tableName: bed
+
+#--------------------- Ajuste para nueva columna NotNull con DefaultValue para DB2 -------------------
+#-------------------------- [ PostgreSQL y MSSQL no fallan con Tabla vacía ] -------------------------
+- changeSet:
+    id: bed-addColumn-bed_number
+    author: saguero
+    dbms: db2
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: bed_number
+            type: varchar(50)
+            defaultValue: -1
+            constraints:
+                nullable: false
+        tableName: bed
+
+- changeSet:
+    id: room-addColumn-room_number
+    author: lmanterola
+    dbms: "!db2"
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: room_number
+            type: varchar(50)
+            constraints:
+                nullable: false
+        tableName: room
+
+- changeSet:
+    id: room-addColumn-room_number
+    author: lmanterola
+    dbms: db2
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: room_number
+            type: varchar(50)
+            defaultValue: -1
+            constraints:
+                nullable: false
+        tableName: room
+
+- changeSet:
+    id: bed-unique_constraint
+    author: lmanterola
+    changes:
+        - addUniqueConstraint:
+            tableName: bed
+            columnNames: bed_number, room_id
+            constraintName: UQ_bed
+
+- changeSet:
+    id: room-unique_constraint
+    author: lmanterola
+    changes:
+        - addUniqueConstraint:
+            tableName: room
+            columnNames: room_number, clinical_specialty_sector_id
+            constraintName: UQ_room
+
+- changeSet:
+    id: renameColumn-healthcare_professional_group-responsable
+    author: etrapani
+    changes:
+    - renameColumn:
+        columnDataType: boolean
+        newColumnName: responsible
+        oldColumnName: responsable
+        tableName: healthcare_professional_group
+
+- changeSet:
+    id: renameColumn-internment_episode-clinical_speciality_id
+    author: etrapani
+    changes:
+    - renameColumn:
+        columnDataType: varchar(20)
+        newColumnName: clinical_specialty_id
+        oldColumnName: clinical_speciality_id
+        tableName: internment_episode
+
+- changeSet:
+    id: modifyDataType-internment_episode-clinical_specialty_id
+    author: etrapani
+    changes:
+    - modifyDataType:
+        columnName: clinical_specialty_id
+        newDataType: int
+        tableName: internment_episode
+
+- changeSet:
+    id: addForeignKeyConstraint-internment_episode-clinical_specialty_id
+    author: etrapani
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: clinical_specialty_id
+        baseTableName: internment_episode
+        constraintName: FK_internment_episode_clinical_specialty_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: clinical_specialty
+        validate: true
+
+- changeSet:
+    id: healthcare_professional-table
+    comments: Tablas staff medico y especialidades médicas
+    author: efernandez
+    changes:
+        - createTable:
+            tableName: healthcare_professional
+            columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                        primaryKey: true
+                        primaryKeyName: PK_healthcare_professional
+                - column:
+                    name: license_number
+                    type: varchar(512)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: person_id
+                    type: int
+                    constraints:
+                        nullable: false
+                - column:
+                    name: is_medical_doctor
+                    type: boolean
+                    constraints:
+                        nullable: false
+        - addForeignKeyConstraint:
+            constraintName: FK_healthcare_professional__person_id
+            baseTableName: healthcare_professional
+            baseColumnNames: person_id
+            referencedTableName: person 
+            referencedColumnNames: id
+            validate: true
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+        - createTable:
+            tableName: education_type
+            columns:
+                - column:
+                    name: id
+                    type: smallint
+                    constraints:
+                        primaryKey: true
+                        primaryKeyName: PK_education_type
+                - column:
+                    name: description
+                    type: varchar(100)
+                    constraints:
+                        nullable: false
+        - createTable:
+            tableName: professional_specialty
+            columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                        primaryKey: true
+                        primaryKeyName: PK_professional_specialty
+                - column:
+                    name: description
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: description_profession_ref
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: sctid_code
+                    type: varchar(20)
+                    constraints:
+                        nullable: true
+                - column:
+                    name: education_type_id
+                    type: smallint
+                    constraints:
+                        nullable: false
+        - addForeignKeyConstraint:
+            constraintName: FK_professional_specialty__education_type_id
+            baseTableName: professional_specialty
+            baseColumnNames: education_type_id
+            referencedTableName: education_type 
+            referencedColumnNames: id
+            validate: true
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+        - createTable:
+            tableName: healthcare_professional_specialty
+            columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                        primaryKey: true
+                        primaryKeyName: PK_healthcare_professional_specialty
+                - column:
+                    name: description
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: healthcare_professional_id
+                    type: int
+                    constraints:
+                        nullable: false
+                - column:
+                    name: professional_specialty_id
+                    type: int
+                    constraints:
+                        nullable: false
+        - addForeignKeyConstraint:
+            constraintName: FK_healthcare_professional_specialty__healthcare_professional_id
+            baseTableName: healthcare_professional_specialty
+            baseColumnNames: healthcare_professional_id
+            referencedTableName: healthcare_professional
+            referencedColumnNames: id
+            validate: true
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+        - addForeignKeyConstraint:
+            constraintName: FK_healthcare_professional_specialty__professional_specialty_id
+            baseTableName: healthcare_professional_specialty
+            baseColumnNames: professional_specialty_id
+            referencedTableName: professional_specialty
+            referencedColumnNames: id
+            validate: true
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+
+- changeSet:
+    id: education_type-data
+    comment: Carga de datos education_type
+    author: efernandez
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO education_type VALUES (1, 'Auxiliarato');
+                INSERT INTO education_type VALUES (2, 'Grado Universitario');
+                INSERT INTO education_type VALUES (3, 'Tecnicatura');
+
+- changeSet:
+    id: dropColumn-clinical_specialty
+    author: lmanterola
+    changes:
+    - dropColumn:
+        columnName: description
+        tableName: clinical_specialty
+
+- changeSet:
+    id: clinical_specialty-metadata
+    author: lmanterola
+    context: "!schema-only"
+    changes: 
+        - sql:
+            sql: |- 
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Pediatría', 310066004);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Enfermería UTI neonatal', 321781000221104);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Gastroenterología pediátrica', 3771000175106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Terapia intensiva', 310032008);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cardiología', 320281000221100);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Psiquiatría de niños y adolescentes', 310117003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Neurología', 320791000221109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Clínica médica', 320611000221107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Geriatría', 3531000175102);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Diagnóstico por imágenes', 708175003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Emergentología pediátrica', 419917007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Reumatología', 3621000175101);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía de cabeza y cuello', 320351000221102);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Farmacia', 310080006);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Nutrición', 310090003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Kinesiología en respiratorio de adultos', 322771000221107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Trabajo social', 320831000221100);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía maxilofacial', 710028007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía bucal', 310145009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Farmacología clínica', 700436003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Salud laboral', 310064001);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Microbiología médica', 310078000);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía dental', 310143002);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Neurocirugía', 310159002);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Prostodoncia', 734863003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Enfermería', 708170008);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Nutrición y alimentación clínica del adultos', 322401000221106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Oncología pediátrica', 310069006);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía vascular', 310168000);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Anatomía patológica', 708183009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Kinesiología en rehabilitación psicofísica', 322761000221103);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cuidados paliativos', 310073009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Enfermería en salud materno infantil y del adolescente', 321171000221103);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Terapia ocupacional', 310093001);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Ortopedia y traumatología infantil', 322261000221106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Adolescencia', 320121000221106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Diagnóstico por imágenes bucomaxilofacial', 320561000221109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Odontología pediátrica', 320521000221101);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Kinesiología', 322361000221104);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Atención neonatal especial', 310070007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Citogenética', 708178001);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Genética', 320601000221109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Alergología', 711332004);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Oftalmología', 310160007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Ortodoncia', 310146005);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Psicología', 310123008);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Oncología quirúrgica', 699478002);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Hepatología', 23901000087101);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Coloproctología', 320451000221106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Medicina vascular', 722352000);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Seguridad y eficacia de medicamentos', 322171000221106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Educación para la salud', 322381000221106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Psicopedagogía', 322391000221109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Diagnóstico por imágenes pediátrico', 320571000221100);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Urología', 310167005);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Infectología pediátrica', 3781000175109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Ginecología', 310061009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía', 310138009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Psicología comunitaria', 322131000221108);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Medicina del deporte', 2351000175106);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Otorrinolaringología', 310149003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía cardiovascular pediátrica', 320321000221108);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Neumonología pediátrica', 3801000175108);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Odontología', 722176000);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Dermatología', 700241009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Psiquiatría', 310116007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Erfermería general y familiar', 321271000221107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Radioterapia', 310023006);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Reumatología infantil', 320811000221108);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Nefrología', 320731000221105);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cardiología pediátrica', 320291000221102);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cuidados intensivos neonatales', 741073001);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Salud mental', 708168004);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Auditoría de servicios de salud', 321511000221104);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Hematología', 708196005);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Inmunología pediátrica', 321751000221109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía gastrointestinal', 310151004);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Nutrición y alimentación clínica infantojuvenil', 322411000221109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Fonoaudiología', 310101009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Neurología pediátrica', 310068003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Hematología pediátrica', 322351000221101);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Hemoterapia', 320671000221101);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Infectología', 320721000221107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Rehabilitación', 310129007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Salud pública veterinaria', 322181000221109);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Terapia intensiva pediátrica', 310034009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Oncología clínica', 310022001);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Bioquímica clínica', 310076001);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Obstetricia', 310063007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Servicios médicos de emergencia', 409971007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Medicina general', 700232004);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Medicina legal', 722393008);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Fisiatría', 773558007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Mastología', 322241000221107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Radiología', 310125001);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía plástica', 310164003);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Kinesiología en pediátria y neonatología', 322371000221108);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Salud pública', 310115006);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Ortopedia y traumatología', 331081000221104);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Electrofisiología cardíaca', 320661000221105);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Endocrinología pediátrica', 3761000175103);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Enfermería en salud familiar y comunitaria', 321131000221101);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Gastroenterología', 700433006);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Neurocirugía pediátrica', 320761000221104);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Farmacología clínica comunitaria', 320581000221102);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Nefrología pediátrica', 3791000175107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Epidemiología', 321461000221102);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía en trasplantes', 310165002);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Otorrinolaringología pediátrica', 322481000221100);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Neumonología', 320741000221103);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Estomatología clínica', 320551000221107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Anestesia', 310001007);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Perinatología', 2451000175103);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Quemados pediátricos', 322031000221107);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Hemato-oncología pediátrica', 320621000221102);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Enfermería pediátrica', 320801000221105);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Toxicología', 708191000);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía torácica', 310141000);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Cirugía pediátrica', 310163009);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Psicología infanto-juvenil', 322081000221108);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Trauma', 322061000221101);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Dermatología pediátrica', 320491000221103);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Esterilización', 331181000221103);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Psicología clínica y comunitaria', 322121000221105);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Endocrinología', 700434000);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Ginecología y obstetricia', 310060005);
+                INSERT INTO clinical_specialty (name, sctid_code) VALUES('Musicoterapia', 310086000);
+
+- changeSet:
+    id: problem_type-table
+    author: saguero
+    changes:
+        - createTable:
+            tableName: problem_type
+            columns:
+            - column:
+                name: id
+                type: varchar(20)
+                constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_problem_type
+            - column:
+                name: description
+                type: varchar(100) 
+                constraints: 
+                    nullable: false
+
+- changeSet:
+    id: health_condition-addColumn-problem_id
+    author: saguero
+    dbms: "!db2"
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: problem_id
+            type: varchar(20)
+            constraints:
+                nullable: false  
+        tableName: health_condition
+    - addForeignKeyConstraint:
+        baseColumnNames: problem_id
+        baseTableName: health_condition
+        constraintName: FK_health_condition_problem_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: problem_type
+        validate: true
+
+- changeSet:
+    id: health_condition-addColumn-problem_id
+    author: saguero
+    dbms: db2
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: problem_id
+            type: varchar(20)
+            defaultValue: -1
+            constraints:
+                nullable: false  
+        tableName: health_condition
+    - addForeignKeyConstraint:
+        baseColumnNames: problem_id
+        baseTableName: health_condition
+        constraintName: FK_health_condition_problem_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: problem_type
+        validate: true
+                    
+- changeSet:
+    id: problem_type-masterdata
+    comment: Carga de datos problem_type
+    author: saguero
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO problem_type VALUES ('439401001', 'Diagnóstico (entidad observable)');
+                INSERT INTO problem_type VALUES ('55607006', 'Problema (hallazgo)');
+                INSERT INTO problem_type VALUES ('57177007', 'Antecedente familiar con contexto explícito (situación)');
+
+- changeSet:
+    id: create_table_password_reset_token
+    author: sperruolo
+    comment: Crea tabla para restablecimineto de contraseñas
+    changes:
+    - createTable:
+        tableName: password_reset_token
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              primaryKeyName: pk_password_reset_token
+            name: id
+            type: bigint
+        - column:
+            constraints:
+              nullable: false
+            name: token
+            type: varchar(200)
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: int
+        - column:
+            constraints:
+              nullable: false
+            name: enable
+            type: boolean
+        - column:
+            constraints:
+              nullable: false
+            name: expiry_date            
+            type: datetime
+
+- changeSet:
+    id: addUniqueConstraint-token-password_reset_token
+    author: sperruolo
+    changes:
+    - addUniqueConstraint:
+        tableName: password_reset_token
+        columnNames: token
+        constraintName: UC_token_password_reset_token
+
+- changeSet:
+    id: snomed-masterdata
+    comment: Cargo datos base de snomed
+    author: etrapani
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('271649006', 'presión sistólica (entidad observable)', '271649006', 'presión sistólica (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('271650006', 'presión diastólica (entidad observable)', '271650006', 'presión diastólica (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('6797001', 'presión arterial media (entidad observable)', '6797001', 'presión arterial media (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('703421000', 'temperatura (entidad observable)', '703421000', 'temperatura (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('364075005', 'frecuencia cardíaca (entidad observable)', '364075005', 'frecuencia cardíaca (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('86290005', 'frecuencia respiratoria (entidad observable)', '86290005', 'frecuencia respiratoria (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('103228002', 'saturación de hemoglobina con oxígeno (entidad observable)', '103228002', 'saturación de hemoglobina con oxígeno (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('50373000', 'altura corporal (entidad observable)', '50373000', 'altura corporal (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('27113001', 'peso corporal (entidad observable)', '27113001', 'peso corporal (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('60621009', 'índice de masa corporal (entidad observable)', '60621009', 'índice de masa corporal (entidad observable)');
+                INSERT INTO snomed (id, fsn, parent_id, parent_fsn) VALUES('365636006', 'hallazgo relacionado con el grupo sanguíneo (hallazgo)', '365636006', 'hallazgo relacionado con el grupo sanguíneo (hallazgo)');
+
+- changeSet:
+    id: professional_specialty-metadata
+    author: lmanterola
+    context: "!schema-only"
+    changes: 
+        - sql:
+            sql: |- 
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Acompañante terapéutico', 'Acompañante Terapéutico', 1561000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Agente de propaganda médica', 'Agente Propaganda Médica', 1541000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Visitador médico', 'Agente Propaganda Médica', 1541000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en salud rural', 'Agente Sanitario', 1491000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Agente sanitario', 'Agente Sanitario', 1491000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico superior en agente sanitario', 'Agente Sanitario', 1491000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Ing. agrónomo', 'Agrónomo', 88955002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Antropólogo', 'Antropólogo', 50835006);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de odontología', 'Asistente Dental', 4162009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Asistente odontología', 'Asistente Dental', 4162009); 
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Asistente dental', 'Asistente Dental', 4162009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar Acompañante Terapéutico', 'Auxiliar Acompañante Terapeútico', 1711000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Agente sanitario', 'Auxiliar Agente Sanitario', 1651000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de educación sanitaria', 'Auxiliar Agente Sanitario', 1651000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de anestesia', 'Auxiliar De Anestesia', 1601000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar técnico de anestesia', 'Auxiliar De Anestesia',	1601000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de bromatología', 'Auxiliar De Bromatología', 1661000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Inspector de bromatología', 'Auxiliar De Bromatología', 1661000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar instrum. quirúrgica', 'Auxiliar De Cirugía', 1611000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de diálisis', 'Auxiliar De Diálisis', 1721000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de estadística de salud', 'Auxiliar De Estadística', 1931000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de estadística', 'Auxiliar De Estadística', 1931000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de esterilización', 'Auxiliar De Esterilización', 1621000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de familia especializado en cuidado de personas', 'Auxiliar De Familia Especializado En Cuidado De Personas', 1691000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de familia especializado en cuidado de personas con discapacidad', 'Auxiliar De Familia Especializado En Cuidado De Personas Con Discapacidad',	1581000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de farmacia', 'Auxiliar De Farmacia', 44652006);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Idóneos de farmacia', 'Auxiliar De Farmacia', 44652006);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de fonoaudiología', 'Auxiliar De Fonoaudiología', 1731000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de hemoterapia', 'Auxiliar De Hemoterapia', 1631000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de laboratorio', 'Auxiliar De Laboratorio', 386629007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de bioquímica', 'Auxiliar De Laboratorio', 386629007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de radiología', 'Auxiliar De Radiología', 1641000221106);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de veterinaria', 'Auxiliar De Veterinaria', 53216000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar dietista', 'Auxiliar Dietista', 1671000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar en electrocardiografía', 'Auxiliar En Electrocardiografía', 1741000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar en electroencefalografía', 'Auxiliar En Electroencefalografía', 1681000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar de enfermería', 'Auxiliar En Enfermería', 5275007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Asistente de enfermería', 'Auxiliar En Enfermería', 5275007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar en geriatría', 'Auxiliar En Geriatría', 1571000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Auxiliar en patología', 'Auxiliar En Patología',	1591000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Bacteriólogo', 'Bacteriólogo', 18537005);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Bacteriólogo clínico industrial', 'Bacteriólogo', 18537005);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en biología', 'Biólogo', 72327007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Biólogo', 'Biólogo', 72327007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en biología molecular', 'Biólogo', 72327007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Bioquímico', 'Bioquímico', 35513000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en bioquímica', 'Bioquímico',	35513000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Lic. en biotecnología', 'Biotecnólogo', 1941000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Contador', 'Contador', 106302007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Cosmetólogo', 'Cosmetólogo', 68529004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Educador sanitario', 'Educador Sanitario', 409974004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Enfermero', 'Enfermero', 308211001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Enfermero superior no universitario', 'Enfermero', 308211001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Enfermero universitario', 'Enfermero', 308211001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Enfermero profesional', 'Enfermero', 308211001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Farmacéutico', 'Farmacéutico', 46255001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Fonoaudiólogo', 'Fonoaudiólogo', 1251000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en fonoaudiología', 'Fonoaudiólogo', 1251000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en genética', 'Genetista', 159141008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Ingeniero biomédico', 'Ingeniero Biomédico', 1751000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Instrumentador quirúrgico', 'Instrumentador Quirúrgico', 1361000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Instrumentista universitario', 'Instrumentador Quirúrgico', 1361000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Instrumentista no universitario', 'Instrumentador Quirúrgico', 1361000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico superior instrumentación quirúrgica', 'Instrumentador Quirúrgico', 1361000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en quirófano', 'Instrumentador Quirúrgico', 1361000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico universitario en quirófano', 'Instrumentador Quirúrgico', 1361000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Kinesiólogo', 'Kinesiólogo', 1221000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en kinesiología', 'Kinesiólogo', 1221000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado terapia física', 'Kinesiólogo', 1221000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en estadística para la salud', 'Lic. Estadística En Salud', 1311000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Obstétrico', 'Lic. Obstetricia', 1261000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en obstetricia', 'Lic. Obstetricia', 1261000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en administración', 'Licenciado En Administración', 1761000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en comunicación social', 'Licenciado En Comunicación Social', 1331000221106);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en Economía', 'Licenciado En Economía', 1771000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en educación para la salud', 'Licenciado En Educación Para La Salud', 1321000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado enfermería', 'Licenciado En Enfermería', 1951000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en instrumentación quirúrgica', 'Licenciado En Instrumentación Quirúrgica', 1781000221106);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en radiología', 'Licenciado En Producción De Bioimágenes', 1291000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en producción bioimágenes', 'Licenciado En Producción De Bioimágenes', 1291000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en diagnóstico por imágenes', 'Licenciado En Producción De Bioimágenes', 1291000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en prótesis y órtesis', 'Licenciado En Prótesis Y Órtesis', 1231000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Médico', 'Médico', 309343006);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Médico veterinario', 'Médico Veterinario', 106290006);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado microbiología', 'Microbiólogo', 159138004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Microbiólogo', 'Microbiólogo', 159138004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Musicoterapeuta', 'Musicoterapeuta', 309412003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en musicoterapia', 'Musicoterapeuta', 309412003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Nutricionista', 'Nutricionista', 768827000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en nutrición', 'Nutricionista', 768827000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Nutricionista dietista', 'Nutricionista', 768827000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Odontólogo', 'Odontólogo', 158979008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(1, 'Operador socio-comunitario especializado en atención de las adicciones', 'Operador Socio-Comunitario Especializado En Atención De Las Adicciones', 1791000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Periodista', 'Periodista', 29536009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Podólogo universitario', 'Podólogo', 224603001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Podólogo', 'Podólogo', 224603001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Pedicuro', 'Podólogo', 224603001);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Profesional de análisis clínicos', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en química', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Químico', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en física-química', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en química industrial', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en análisis clínicos', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Ingeniero químico', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Lic. en ciencias químicas', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Lic. en hemoterapia e inmunohematología', 'Profesional De Análisis Clínicos', 1301000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Profesor en psicomotricidad', 'Profesor En Educación Especial', 106309003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Prof. educación especial', 'Profesor En Educación Especial', 106309003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Prof. deficientes mentales', 'Profesor En Educación Especial', 106309003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Prof. educador sordos', 'Profesor En Educación Especial', 106309003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Prof. deficientes del oído, voz y palabra', 'Profesor En Educación Especial', 106309003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Prof. sordos y terapeuta del lenguaje', 'Profesor En Educación Especial', 106309003);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Psicólogo', 'Psicólogo', 59944000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en psicología', 'Psicólogo', 59944000);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en psicomotrocidad', 'Psicomotricista',  1241000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Psicopedagogo', 'Psicopedagogo', 1211000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en psicopedagogía', 'Psicopedagogo', 1211000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en saneamiento y protección ambiental', 'Saneamiento Ambiental', 1341000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Ambientólogo', 'Saneamiento Ambiental', 1341000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Ingeniero sanitario', 'Saneamiento Ambiental', 1341000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Bioingeniería', 'Saneamiento Ambiental', 1341000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Sociólogo', 'Sociólogo', 824004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico administración social y de salud', 'Técnico Administración En Salud', 1501000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en administración y gestión', 'Técnico Administración En Salud', 1501000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico univ. en administración', 'Técnico Administración En Salud', 1501000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico laboratorio análisis clínicos', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico laboratorio', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico superior laboratorio', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico análisis clínicos', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico químico', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico químico orientación laboratorista', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Analista químico biológico', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Perito químico', 'Técnico De Laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico bacteriólogo','Técnico de laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico químico industrial','Técnico de laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Asistente químico industrial','Técnico de laboratorio', 159282002);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en diálisis', 'Técnico Diálisis', 1401000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico hemodiálisis', 'Técnico Diálisis', 1401000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico alimentación', 'Técnico En Alimentos', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico industria alimentos', 'Técnico En Alimentos', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico superior industria alimentaria', 'Técnico En Alimentos', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en bromatología', 'Técnico En Alimentos', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico superior en alimentos con orientación en bromatología', 'Técnico En Alimentos', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en lechería y tecnología alimentos', 'Técnico En Alimentos', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Bromatólogo', 'Técnico En Alimentos', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en anestesia', 'Técnico En Anestesia', 331091000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en histología', 'Técnico En Citología', 386627009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico laboratorio clínico e histopatología', 'Técnico En Citología', 386627009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Citotécnico', 'Técnico En Citología', 386627009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en citología', 'Técnico En Citología', 386627009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico preparador de histología', 'Técnico En Citología', 386627009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en anatomía patológica', 'Técnico En Citología', 386627009);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en emergencia médica', 'Técnico En Emergencia Médica', 1521000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Tecnico Universitario en Emergencias Sanitarias y Desastres', 'Técnico En Emergencia Médica', 1521000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico estadística', 'Técnico En Estadística', 1441000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico bioestadística', 'Técnico En Estadística', 1441000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico estadística en salud', 'Técnico En Estadística', 1441000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico superior en esterilización', 'Técnico En Esterilización', 1351000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en esterilización', 'Técnico En Esterilización', 1351000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en farmacia', 'Técnico En Farmacia', 159040006);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en farmacia hospitalaria', 'Técnico En Farmacia', 159040006);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en fonoaudiología', 'Técnico En Fonoaudiología', 1831000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en hemoterapia', 'Técnico En Hemoterapia', 1371000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en hemoterapia e inmunohematología', 'Técnico En Hemoterapia', 1371000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico hematólogo', 'Técnico En Hemoterapia', 1371000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico de transfusión', 'Técnico En Hemoterapia', 1371000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en inmunohematología', 'Técnico En Hemoterapia', 1371000221109);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en identificacion del recién nacido', 'Técnico En Identificación Del Recién Nacido', 1511000221106);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en electroencefalografía', 'Técnico En Neurofisiología', 1391000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en neurofisiología', 'Técnico En Neurofisiología', 1391000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en obstetricia', 'Técnico En Obstetricia', 1471000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Obstétrico', 'Técnico En Obstetricia', 1471000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Obstetra', 'Técnico En Obstetricia', 1471000221104);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en prácticas cardiológicas', 'Técnico En Prácticas Cardiológicas', 1381000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico cardiólogo', 'Técnico En Prácticas Cardiológicas', 1381000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en electrocardiografía', 'Técnico En Prácticas Cardiológicas', 1381000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en Prevención de la Drogadependencia', 'Técnico En Prevención De La Drogadependencia', 1821000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en prótesis dental', 'Técnico En Prótesis Dental', 1411000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico protesista dental', 'Técnico En Prótesis Dental', 1411000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Protésico dental universitario', 'Técnico En Prótesis Dental', 1411000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Mecánico dental', 'Técnico En Prótesis Dental', 1411000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en odontología', 'Técnico En Prótesis Dental', 1411000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Mecánico para odontólogos', 'Técnico En Prótesis Dental', 1411000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico de laboratorio para odontólogos', 'Técnico En Prótesis Dental', 1411000221105);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en prótesis y órtesis', 'Técnico En Prótesis Y Órtesis', 1421000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico ortopédico ortóptico', 'Técnico En Prótesis Y Órtesis', 1421000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico ortesista protesista', 'Técnico En Prótesis Y Órtesis', 1421000221100);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Terapista ocupacional', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en estimulación temprana', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en disc. intelectual y estimulación temprana', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Psicomotricista', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en psicomotricidad', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Musicoterapeuta', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en psicogerontología', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico kinesiólogo', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Psicopedagogo', 'Técnico En Rehabilitación', 1461000221108);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en saneamiento', 'Técnico En Saneamiento Ambiental',	1531000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en saneamiento ambiental', 'Técnico En Saneamiento Ambiental', 1531000221103);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Trabajador social', 'Técnico En Trabajo Social', 1481000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Asistente social', 'Técnico En Trabajo Social', 1481000221101);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en veterinaria', 'Técnico En Veterinaria', 1551000221107);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Nutricionista', 'Técnico Nutricionista', 1451000221106);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico óptico', 'Técnico Óptico', 1431000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en óptica', 'Técnico Óptico', 1431000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Óptico técnico/contactólogo', 'Técnico Óptico', 1431000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico óptica (contac. e instrumental)', 'Técnico Óptico', 1431000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico oftalmología', 'Técnico Óptico', 1431000221102);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico radiólogo', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico superior en radiología', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico diagnóstico por imágenes', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en radiodiagnóstico', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en bioimágenes', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en radiología y terapia radiante', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en tomografía axial computada', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico radiante', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(3, 'Técnico en medicina nuclear', 'Técnico Radiólogo', 41904004);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en bromatología', 'Tecnología Alimentaria', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en tecnología y alimentos', 'Tecnología Alimentaria', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Ingeniero en industria de la alimentación', 'Tecnología Alimentaria', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Fruticultor - enólogo', 'Tecnología Alimentaria', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Lic. en gestión de agroalimentos', 'Tecnología Alimentaria', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Ingeniero en alimentos', 'Tecnología Alimentaria', 58288008);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Terapista ocupacional', 'Terapista Ocupacional', 80546007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en terapia ocupacional', 'Terapista Ocupacional', 80546007);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en trabajo social', 'Trabajador Social', 106328005);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Trabajador social', 'Trabajador Social', 106328005);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en servicio social', 'Trabajador Social', 106328005);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Asistente social', 'Trabajador Social', 106328005);
+                INSERT INTO professional_specialty (education_type_id, description, description_profession_ref, sctid_code) 
+                VALUES(2, 'Licenciado en asistencia social', 'Trabajador Social', 106328005);
+
+- changeSet:
+    id: renameColumn-document-note_id
+    author: etrapani
+    dbms: "!db2"
+    changes:
+    - renameColumn:
+        columnDataType: bigint
+        newColumnName: other_note_id
+        oldColumnName: note_id
+        tableName: document                
+
+#--------------------------------- Ajuste renombre de columna para DB2 -------------------------------
+- changeSet:
+    id: renameColumn-document-note_id
+    author: saguero
+    dbms: db2
+    changes:
+    - dropForeignKeyConstraint:
+        baseTableName: document
+        constraintName: FK_document_note_id
+    - renameColumn:
+        columnDataType: bigint
+        newColumnName: other_note_id
+        oldColumnName: note_id
+        tableName: document
+    - addForeignKeyConstraint:
+        baseColumnNames: other_note_id
+        baseTableName: document
+        constraintName: FK_document_note_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: note
+        validate: true   
+
+- changeSet:
+    id: document-addColumn-notes
+    author: etrapani
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: physical_exam_note_id
+            type: bigint
+            constraints:
+                nullable: true  
+        - column:
+            name: studies_summary_note_id
+            type: bigint
+            constraints:
+                nullable: true  
+        - column:
+            name: evolution_note_id
+            type: bigint
+            constraints:
+                nullable: true 
+        - column:
+            name: clinical_impression_note_id
+            type: bigint
+            constraints:
+                nullable: true  
+        - column:
+            name: current_illness_note_id
+            type: bigint
+            constraints:
+                nullable: true 
+        - column:
+            name: indications_note_id
+            type: bigint
+            constraints:
+                nullable: true 
+        tableName: document
+    - addForeignKeyConstraint:
+        baseColumnNames: physical_exam_note_id
+        baseTableName: document
+        constraintName: FK_document_physical_exam_note_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: note
+        validate: true 
+    - addForeignKeyConstraint:
+        baseColumnNames: studies_summary_note_id
+        baseTableName: document
+        constraintName: FK_document_studies_summary_note_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: note
+        validate: true 
+    - addForeignKeyConstraint:
+        baseColumnNames: evolution_note_id
+        baseTableName: document
+        constraintName: FK_document_evolution_note_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: note
+        validate: true 
+    - addForeignKeyConstraint:
+        baseColumnNames: clinical_impression_note_id
+        baseTableName: document
+        constraintName: FK_document_clinical_impression_note_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: note
+        validate: true 
+    - addForeignKeyConstraint:
+        baseColumnNames: current_illness_note_id
+        baseTableName: document
+        constraintName: FK_document_current_illness_note_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: note
+        validate: true
+    - addForeignKeyConstraint:
+        baseColumnNames: indications_note_id
+        baseTableName: document
+        constraintName: FK_document_indications_note_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: note
+        validate: true  
+
+- changeSet:
+    id: user_role__institution_id
+    comment: Add institution_id column to user_role
+    author: efernandez
+    changes:
+    - addColumn:
+        tableName: user_role
+        columns:
+        - column:
+            name: institution_id
+            type: integer
+            constraints:
+                nullable: true  
+    - addForeignKeyConstraint:
+        baseColumnNames: institution_id
+        baseTableName: user_role
+        constraintName: FK_user_role__institution_id
+        onDelete: CASCADE
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: institution
+        validate: true
+
+- changeSet:        
+    id: dropNotNullConstraint-inmunization-institution_id
+    author: etrapani
+    changes:
+    - dropNotNullConstraint:
+        columnDataType: int
+        columnName: institution_id
+        tableName: inmunization
+
+
+
+- changeSet:
+    id: blood_type table
+    author: etrapani
+    changes: 
+    - createTable: 
+        tableName: blood_type
+        columns: 
+        - column:
+            constraints:
+                primaryKey: true
+                primaryKeyName: PK_blood_type
+            name: id
+            type: smallint
+        - column:
+            constraints:
+                nullable: false
+            name: description
+            type: varchar(3)
+
+- changeSet:
+    id: blood_type-data
+    comment: Carga de datos blood_type
+    author: etrapani
+    dbms: "!db2"
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO blood_type VALUES (1, 'O-');
+                INSERT INTO blood_type VALUES (2, 'O+');
+                INSERT INTO blood_type VALUES (3, 'A−');
+                INSERT INTO blood_type VALUES (4, 'A+');
+                INSERT INTO blood_type VALUES (5, 'B−');
+                INSERT INTO blood_type VALUES (6, 'B+');
+                INSERT INTO blood_type VALUES (7, 'AB−');
+                INSERT INTO blood_type VALUES (8, 'AB+');
+
+- changeSet:
+    id: blood_type-data
+    comment: Carga de datos blood_type
+    author: saguero
+    dbms: db2
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO blood_type VALUES (1, 'O-');
+                INSERT INTO blood_type VALUES (2, 'O+');
+                INSERT INTO blood_type VALUES (3, 'A-');
+                INSERT INTO blood_type VALUES (4, 'A+');
+                INSERT INTO blood_type VALUES (5, 'B-');
+                INSERT INTO blood_type VALUES (6, 'B+');
+                INSERT INTO blood_type VALUES (7, 'AB-');
+                INSERT INTO blood_type VALUES (8, 'AB+');
+
+- changeSet:
+    id: patient-addColumns-medical_coverage
+    author: gmurgolo
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: medical_coverage_name
+            type: varchar(255)
+            constraints:
+                nullable: true  
+        - column:
+            name: medical_coverage_affiliate_number
+            type: varchar(150)
+            constraints:
+                nullable: true
+        tableName: patient
+
+- changeSet:
+    id: dropColumn-person_extended
+    author: lbergottini
+    dbms: "!mssql"
+    changes:
+    - dropColumn:
+        columnName: health_insurance_id
+        tableName: person_extended
+
+#------------------------- Ajuste drop-column-with-FK para coincidir con MSSQL -----------------------
+- changeSet:
+    id: dropColumn-person_extended-mssql
+    author: saguero
+    dbms: mssql
+    changes:
+    - dropForeignKeyConstraint:
+        baseTableName: person_extended
+        constraintName: FK_person_extended_health_insurance_id
+    - dropColumn:
+        columnName: health_insurance_id
+        tableName: person_extended 
+
+- changeSet:
+    id: health_insurance-dropPrimaryKey
+    author: lbergottini
+    changes:
+    - dropPrimaryKey:
+        constraintName: PK_health_insurance
+        dropIndex: true
+        tableName: health_insurance
+        
+- changeSet:
+    id: health_insurance-addPrimaryKey
+    author: lbergottini
+    changes:
+    - addPrimaryKey:
+        columnNames: rnos
+        constraintName: PK_health_insurance
+        tableName: health_insurance
+        validate: true
+
+- changeSet:
+    id: dropColumn-health_insurance_id
+    author: lbergottini
+    changes:
+    - dropColumn:
+        columnName: id
+        tableName: health_insurance
+        
+- changeSet:
+    id: rnos-modifyDataType
+    author: lbergottini
+    dbms: postgresql
+    changes:
+    - modifyDataType:
+        columnName: rnos
+        newDataType: int
+        tableName: health_insurance
+
+#---------------------- Ajuste tipo de columna of PK para coincidir con MSSQL y DB2 --------------------
+- changeSet:
+    id: rnos-modifyDataType
+    author: saguero
+    comment: MSSQL requires to drop PK before changing it type
+    dbms: "!postgresql"
+    changes:
+    - dropPrimaryKey:
+        constraintName: PK_health_insurance
+        dropIndex: true
+        tableName: health_insurance
+    - modifyDataType:
+        columnName: rnos
+        newDataType: int
+        tableName: health_insurance
+    - addNotNullConstraint:
+        columnDataType: int
+        columnName: rnos
+        tableName: health_insurance
+    - addPrimaryKey:
+        constraintName: PK_health_insurance
+        tableName: health_insurance
+        columnNames: rnos
+
+- changeSet:
+    id: delete-condition_clinical_status-data
+    comment: Borrado de datos condition_clinical_status
+    author: saguero
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                DELETE FROM condition_clinical_status WHERE id='246455001';
+                DELETE FROM condition_clinical_status WHERE id='263855007';
+
+- changeSet:
+    id: modifying-condition_clinical_status-data
+    comment: Actualizacion de datos condition_clinical_status
+    author: saguero
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE condition_clinical_status SET description = 'Activo' WHERE id='55561003';
+                UPDATE condition_clinical_status SET description = 'Inactivo' WHERE id='73425007';
+                UPDATE condition_clinical_status SET description = 'Remisión' WHERE id='277022003';
+                UPDATE condition_clinical_status SET description = 'Resuelto' WHERE id='723506003';
+
+- changeSet:
+    id: delete-condition_verification_status-data
+    comment: Borrado de datos condition_verification_status
+    author: saguero
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                DELETE FROM condition_verification_status WHERE id='5558000';
+                DELETE FROM condition_verification_status WHERE id='47965005';
+                DELETE FROM condition_verification_status WHERE id='723511001';
+
+- changeSet:
+    id: add-condition_verification_status-data
+    comment: Carga de datos condition_verification_status
+    author: saguero
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO condition_verification_status(id, description) VALUES ('260385009', 'Descartado');
+
+- changeSet:
+    id: modifying-condition_verification_status-data
+    comment: Carga de datos blood_type
+    author: saguero
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE condition_verification_status SET description = 'Presuntivo' WHERE id='76104008';
+                UPDATE condition_verification_status SET description = 'Confirmado' WHERE id='59156000';
+                UPDATE condition_verification_status SET description = 'Ingresado por error' WHERE id='723510000';
+                
+- changeSet:
+    id: patient-addColumn-health_insurance
+    author: lbergottini
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: health_insurance_id
+            type: int
+        tableName: patient
+    - addForeignKeyConstraint:
+        baseColumnNames: health_insurance_id
+        baseTableName: patient
+        constraintName: FK_health_insurance_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: rnos
+        referencedTableName: health_insurance
+        validate: true
+        
+- changeSet:
+    id: dropColumn-health_insurance_query_date
+    author: lbergottini
+    changes:
+    - dropColumn:
+        columnName: query_date
+        tableName: health_insurance
+        
+- changeSet: 
+    id: health_insurance-metadata
+    author: lbergottini
+    context: "!schema-only"
+    changes: 
+        - sql: 
+            sql: |- 
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (208,'OBRA SOCIAL DEL  PERSONAL DE LA INDUSTRIA GRAFICA DE LA PROVINCIA DE CORDOBA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (307,' OBRA SOCIAL PORTUARIOS ARGENTINOS DE MAR DEL PLATA','OSPA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (406,'OBRA SOCIAL DEL PERSONAL DEL ORGANISMO DE CONTROL EXTERNO','OSPOCE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (505,'OBRA SOCIAL DE CAPITANES, PILOTOS Y PATRONES DE PESCA','OSPESCA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (604,'OBRA SOCIAL DE AGENTES DE LOTERIAS Y AFINES DE LA REPUBLICA  ARGENTINA','OSALARA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (703,'MUTUAL DEL PERSONAL DEL AGUA Y LA ENERGIA  DE MENDOZA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (901,' OBRA SOCIAL DE LA ACTIVIDAD DE SEGUROS, REASEGUROS, CAPITALIZACION Y AHORRO Y PRESTAMO PARA LA VIVIENDA','OSSEG');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1102,'OBRA SOCIAL PARA LA ACTIVIDAD DOCENTE','OSPLAD');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1201,'OBRA SOCIAL PARA EL PERSONAL DEL MINISTERIO DE ECONOMIA Y DE OBRAS Y SERVICIOS PUBLICOS','OSME');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1300,'OBRA SOCIAL FERROVIARIA','OSFE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1508,'OBRA SOCIAL DE LA ASOCIACION CIVIL PROSINDICATO DE AMAS DE CASA DE LA REPUBLICA ARGENTINA','OSSACRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1607,'OBRA SOCIAL DEL SINDICATO UNIDO DE TRABAJADORES DE LA INDUSTRIA DE AGUAS GASEOSAS DE LA PROVINCIA DE SANTA FE','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1706,'OBRA SOCIAL DEL PERSONAL JERARQUICO DE LA REPUBLICA ARGENTINA PARA EL PERSONAL JERARQUICO DE LA INDUSTRIA GRAFICA Y EL PERSONAL JERARQUICO DEL AGUA Y LA ENERGIA','OSJERA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1805,'OBRA SOCIAL DE LOS  LEGISLADORES DE LA REPUBLICA ARGENTINA','OSLERA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (1904,'OBRA SOCIAL DE LA FEDERACION DE CAMARAS Y CENTROS COMERCIALES ZONALES DE LA REPUBLICA ARGENTINA (FEDECAMARAS)','FEDECAMARAS');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2105,'OBRA SOCIAL PROFESIONALES DEL TURF DE LA REPUBLICA ARGENTINA','OSPROTURA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2204,'OBRA SOCIAL DE EMPLEADOS Y PERSONAL JERARQUICO  DE LA ACTIVIDAD DEL  NEUMATICO ARGENTINO DE NEUMATICOS GOOD YEAR SRL','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2303,'OBRA SOCIAL PARA EL  PERSONAL DE EMPRESAS DE  LIMPIEZA, SERVICIOS Y MAESTRANZA DE MENDOZA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2402,'OBRA SOCIAL DEL PERSONAL JERARQUICO DEL TRANSPORTE AUTOMOTOR DE PASAJEROS DE CORDOBA Y AFINES','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2501,'OBRA SOCIAL DE MINISTROS, SECRETARIOS Y SUBSECRETARIOS','OSMISS');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2600,'OBRA SOCIAL DE LOS TRABAJADORES DE LA CARNE Y AFINES DE LA REPUBLICA ARGENTINA','O.S.T.C.A.R.A.');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2709,'OBRA SOCIAL DE LOS TRABAJADORES ASOCIADOS A LA ASOCIACION MUTUAL MERCANTIL ARGENTINA','OSTAMMA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2808,'OBRA SOCIAL DE LA CAMARA DE EMPRESARIOS DE AGENCIAS DE REMISES DE ARGENTINA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (2907,'OBRA SOCIAL ASOCIACION MUTUAL METALURGICA VILLA CONSTITUCION','OSAMMVC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3009,'OBRA SOCIAL DEL PERSONAL ASOCIADO A ASOCIACION MUTUAL SANCOR','O.S.PERS.A.A.M.S.');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3108,'OBRA SOCIAL DE LOS INMIGRANTES ESPAÑOLES Y SUS DESCENDIENTES RESIDENTES EN LA REPUBLICA ARGENTINA','OSPAÑA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3207,'OBRA SOCIAL DE TRABAJADORES SOCIOS DE LA ASOCIACION MUTUAL DEL PERSONAL JERARQUICO DE BANCOS OFICIALES NACIONALES-JERARQUICOS SALUD-','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3306,'OBRA SOCIAL DE TRABAJADORES VENDEDORES DE DIARIOS REVISTAS Y AFINES','OSTVENDRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3405,'OBRA SOCIAL ASOCIACION  MUTUAL DE LOS OBREROS CATOLICOS PADRE FEDERICO GROTE','O.S.A.M.O.C');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3504,'OBRA SOCIAL DE CONDUCTORES TITULARES DE TAXIS DE LA CIUDAD AUTONOMA DE BUENOS AIRES','O.S.TAX.B.A');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3603,'OBRA SOCIAL PROGRAMAS MEDICOS SOCIEDAD ARGENTINA DE CONSULTORIA MUTUAL','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3702,'OBRA SOCIAL  YACIMIENTOS CARBONIFEROS','OSYC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (3801,'OBRA SOCIAL  WITCEL','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100106,'OBRA SOCIAL PARA EL PERSONAL DE LA INDUSTRIA ACEITERA, DESMOTADORA Y AFINES','OSIAD');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100205,'OBRA SOCIAL DE ACTORES','OSA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100304,'OBRA SOCIAL DE TECNICOS DE VUELO DE LINEAS AEREAS','OSTVLA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100403,'OBRA SOCIAL DEL PERSONAL SUPERIOR Y PROFESIONAL DE EMPRESAS AEROCOMERCIALES','OSPEA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100502,'OBRA SOCIAL DEL PERSONAL AERONAUTICO','OSPA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100601,'OBRA SOCIAL DEL PERSONAL DE AERONAVEGACION DE ENTES PRIVADOS','OSPADEP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100700,'OBRA SOCIAL DEL PERSONAL TECNICO AERONAUTICO','OSPTA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100809,'OBRA SOCIAL DE AERONAVEGANTES','OSA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (100908,'OBRA SOCIAL  EMPLEADOS DE AGENCIAS DE INFORMES','OSEADI');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (101000,'OBRA SOCIAL DEL PERSONAL DE AGUAS GASEOSAS Y AFINES','OSPAGA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (101109,'OBRA SOCIAL DE ALFAJOREROS, REPOSTEROS, PIZZEROS Y HELADEROS','OSARPYH');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (101208,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DE LA ALIMENTACION','OSPIA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (101604,'OBRA SOCIAL DEL PERSONAL DEL AUTOMOVIL  CLUB ARGENTINO','OSPACA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (101802,'OBRA SOCIAL DEL PERSONAL DEL AZUCAR DEL INGENIO LA ESPERANZA','OSPA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (101901,'OBRA SOCIAL DEL PERSONAL DEL AZUCAR DEL INGENIO LEDESMA','OSPAIL');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (102300,'OBRA SOCIAL DEL PERSONAL DEL AZUCAR DEL INGENIO SAN MARTIN','OSPA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (102706,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA AZUCARERA','OSPIA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (102904,'OBRA SOCIAL DEL PERSONAL DE BARRACAS DE LANAS, CUEROS Y ANEXOS','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103006,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA BOTONERA','OSPIB');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103105,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL CALZADO','OSPICAL');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103204,'OBRA SOCIAL DE CONDUCTORES CAMIONEROS Y PERSONAL DEL TRANSPORTE AUTOMOTOR DE CARGAS','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103402,'OBRA SOCIAL DEL PERSONAL DE CARGA Y DESCARGA','OSPCYD');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103600,'OBRA SOCIAL DEL PERSONAL AUXILIAR DE CASAS PARTICULARES','OSPACP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103709,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL CAUCHO','OSPIC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103808,'OBRA SOCIAL DEL PERSONAL DEL CAUCHO','OSPECA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (103907,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL CAUCHO DE SANTA FE','OSPIC SANTA FE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104009,'OBRA SOCIAL DEL PERSONAL DE CEMENTERIOS DE LA REPUBLICA ARGENTINA.','OSPCRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104108,'OBRA SOCIAL DE CERAMISTAS','OSCE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104207,'OBRA SOCIAL DEL PERSONAL DE LA CERAMICA, SANITARIOS, PORCELANA DE MESA Y AFINES','OSPCSPMYA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104306,'OBRA SOCIAL DEL PERSONAL DE LA ACTIVIDAD CERVECERA Y AFINES','OSPACA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104405,'OBRA SOCIAL DEL PERSONAL CINEMATOGRAFICO DE MAR DEL PLATA','OSPERCIN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104504,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA CINEMATOGRAFICA','OSPIC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104603,'OBRA SOCIAL DE OPERADORES CINEMATOGRAFICOS','OSOC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (104801,'OBRA SOCIAL DE COLOCADORES DE AZULEJOS, MOSAICOS, GRANITEROS, LUSTRADORES Y PORCELANEROS','OSCAMGLYP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (105002,'OBRA SOCIAL DE CONDUCTORES NAVALES','OSCONARA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (105309,'OBRA SOCIAL DEL PERSONAL ADMINISTRATIVO Y TECNICO DE LA CONSTRUCCION Y AFINES','OSPATCA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (105408,'OBRA SOCIAL DEL PERSONAL DE LA CONSTRUCCION','OSPECON');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (105507,'OBRA SOCIAL DE LOS CORTADORES DE LA INDUMENTARIA','OSUCI');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (105606,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL CUERO Y AFINES','OSPICA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (105705,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL CHACINADO Y AFINES','OSPICHA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (105804,'OBRA SOCIAL DE CHOFERES DE CAMIONES','OSCHOCA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106005,'OBRA SOCIAL DEL PERSONAL DE ENTIDADES DEPORTIVAS Y CIVILES','OSPEDYC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106104,'OBRA SOCIAL DE EMPLEADOS DE DESPACHANTES DE ADUANA','OSEDA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106203,'OBRA SOCIAL DEL PERSONAL DE DISTRIBUIDORAS CINEMATOGRAFICAS DE LA R.A.','OSPEDICI');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106302,'OBRA SOCIAL DE DOCENTES PARTICULARES','OSDOP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106401,'OBRA SOCIAL DEL PERSONAL DE EDIFICIOS DE RENTA Y HORIZONTAL DE LA REPUBLICA ARGENTINA','OSPERYHRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106500,'OBRA SOCIAL DEL PERSONAL DE EDIFICIOS DE RENTA Y HORIZONTAL DE LA CIUDAD AUTONOMA DE BUENOS AIRES  Y GRAN BUENOS AIRES','OSPERYH');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106609,'OBRA SOCIAL ELECTRICISTAS NAVALES','OSEN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106708,'OBRA SOCIAL DE OBREROS EMPACADORES DE FRUTA  DE RIO NEGRO Y NEUQUEN','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106807,'OBRA SOCIAL DEL PERSONAL DE LA ENSEÑANZA PRIVADA','OSPEP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (106906,'OBRA SOCIAL DEL PERSONAL DE ESCRIBANIAS DE LA PROVINCIA DE BUENOS AIRES','OSPEPBA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (107008,'OBRA SOCIAL DEL PERSONAL DE ESCRIBANOS','OSPE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (107107,'OBRA SOCIAL DEL PERSONAL DEL ESPECTACULO PUBLICO','OSPEP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (107206,'OBRA SOCIAL DEL PERSONAL DE ESTACIONES DE SERVICIO, GARAGES, PLAYAS DE ESTACIONAMIENTO Y LAVADEROS AUTOMATICOS','OSPESGYPE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (107404,'OBRA SOCIAL DEL PERSONAL DE FARMACIA','OSPF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (107800,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL FIBROCEMENTO','OSPIF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (107909,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA FIDEERA','OSPIF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108001,'OBRA SOCIAL  PARA EL PERSONAL DE LA INDUSTRIA FORESTAL DE SANTIAGO DEL ESTERO','OSPIFSE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108100,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL FOSFORO, ENCENDIDO Y AFINES','OSPIF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108209,'OBRA SOCIAL DE FOTOGRAFOS','OSFOT');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108407,'OBRA SOCIAL DEL PERSONAL DE LA ACTIVIDAD FRUTICOLA','OSPAF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108506,' OBRA SOCIAL DEL PERSONAL DE MANIPULEO, EMPAQUE Y EXPEDICION DE FRUTA FRESCA Y HORTALIZAS DE CUYO','OSFYHC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108605,'OBRA SOCIAL DE FUTBOLISTAS','FAA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108704,'OBRA SOCIAL DE TECNICOS DE FUTBOL','OSTECF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (108803,'OBRA SOCIAL  DE LA UNION  DE TRABAJADORES  DEL TURISMO, HOTELEROS Y GASTRONOMICOS DE LA REPUBLICA  ARGENTINA','OSUTHGRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (109004,'OBRA SOCIAL DEL PERSONAL GRAFICO','OSPG');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (109202,'OBRA SOCIAL DE GUINCHEROS Y MAQUINISTAS DE GRUAS MOVILES','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (109301,'OBRA SOCIAL DEL PERSONAL DE CONSIGNATARIOS DEL MERCADO NACIONAL DE HACIENDA DE LINIERS','OSPEMER');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (109400,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL HIELO Y MERCADOS PARTICULARES','OSPIHMP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (109509,'OBRA SOCIAL DEL PERSONAL DE LOS HIPODROMOS DE BUENOS AIRES Y SAN ISIDRO','OSPHGBAYSI');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (109608,'OBRA SOCIAL DEL PERSONAL MENSUALIZADO DEL JOCKEY CLUB DE BUENOS AIRES Y LOS HIPODROMOS DE PALERMO Y SAN ISIDRO','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (109707,'OBRA SOCIAL DEL PERSONAL DE IMPRENTA, DIARIOS Y AFINES','OSPIDA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110008,'OBRA SOCIAL DEL PERSONAL DE JABONEROS','OSPEJ');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110107,'OBRA SOCIAL DE JARDINEROS, PARQUISTAS, VIVERISTAS Y FLORICULTORES DE LA REPUBLICA ARGENTINA','OSJPVYF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110206,'OBRA SOCIAL DEL PERSONAL DEL JOCKEY CLUB DE ROSARIO','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110305,'OBRA SOCIAL DEL PERSONAL LADRILLERO','OSPL');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110404,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA LADRILLERA A MAQUINA','OSPILM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110503,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA LECHERA','OSPIL');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110602,'OBRA SOCIAL DE LOCUTORES','OSDEL');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110701,'OBRA SOCIAL DE LA FEDERACION ARGENTINA DE TRABAJADORES DE LUZ Y FUERZA','OSFATLYF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110800,'OBRA SOCIAL DE LOS TRABAJADORES DE LAS EMPRESAS DE ELECTRICIDAD','OSTEE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (110909,'OBRA SOCIAL DEL PERSONAL DE LUZ Y FUERZA DE CORDOBA','OSLYF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111001,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA MADERERA','OSPIM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111209,'OBRA SOCIAL DEL PERSONAL DE MAESTRANZA','OSPM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111308,'OBRA SOCIAL DE MAQUINISTAS DE TEATRO Y TELEVISION','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111407,'OBRA SOCIAL DE CAPITANES DE ULTRAMAR Y OFICIALES DE LA MARINA MERCANTE','OSCOMM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111506,'OBRA SOCIAL DE CAPITANES BAQUEANOS FLUVIALES DE LA MARINA MERCANTE','OSCAPBAQFLU');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111605,'OBRA SOCIAL DE EMPLEADOS DE LA MARINA MERCANTE','OSEMM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111704,'OBRA SOCIAL DE ENCARGADOS APUNTADORES MARITIMOS','OSEAM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111803,'OBRA SOCIAL DEL PERSONAL MARITIMO','OSPM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (111902,'OBRA SOCIAL DEL SINDICATO DE MECANICOS Y AFINES DEL TRANSPORTE AUTOMOTOR','OSMATA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112004,'OBRA SOCIAL DEL PERSONAL SUPERIOR MERCEDES BENZ ARGENTINA','OSPS MERCEDES');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112103,'OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA','OSUOMRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112202,'OBRA SOCIAL DE LOS  SUPERVISORES DE LA INDUSTRIA METALMECANICA DE LA REPUBLICA ARGENTINA','OSSIMRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112301,'OBRA SOCIAL DEL PERSONAL DE  MICROS Y OMNIBUS DE MENDOZA','OSPEMOM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112400,'OBRA SOCIAL DE LA ACTIVIDAD MINERA','O.S.A.M.');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112509,'OBRA SOCIAL MODELOS ARGENTINOS','OSMA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112608,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA MOLINERA','OSPIM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112707,'OBRA SOCIAL DEL PERSONAL MOSAISTA','OSPM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (112806,'OBRA SOCIAL DE MUSICOS','OSDEM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (113205,'OBRA SOCIAL DE JEFES Y OFICIALES NAVALES DE RADIOCOMUNICACIONES','OSJONR');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (113304,'OBRA SOCIAL DE JEFES Y OFICIALES MAQUINISTAS NAVALES','OSJOMN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (113403,'OBRA SOCIAL DEL PERSONAL NAVAL','OSPENA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (113601,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL NEUMATICO','OSPIN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (113700,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA NAVAL','OSPIN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (113809,'OBRA SOCIAL DE COMISARIOS NAVALES','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (113908,'OBRA SOCIAL DEL PERSONAL DE PANADERIAS','OSPEP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (114000,'OBRA SOCIAL DE PANADEROS, PASTELEROS Y FACTUREROS DE ENTRE RIOS','OSSPYFER');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (114109,'OBRA SOCIAL DEL PERSONAL DEL PAPEL, CARTON Y QUIMICOS','OSPPCYQ');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (114208,'OBRA SOCIAL DE LA INDUSTRIA DE PASTAS ALIMENTICIAS','OSIPA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (114307,'OBRA SOCIAL TRABAJADORES  PASTELEROS, CONFITEROS, PIZZEROS , HELADEROS Y ALFAJOREROS DE LA REPUBLICA ARGENTINA','OSTPCHPYARA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (114505,'OBRA SOCIAL DE PATRONES DE CABOTAJE DE RIOS Y PUERTOS','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (114703,'OBRA SOCIAL DEL PERSONAL DE PELUQUERIAS, ESTETICAS Y AFINES','OSPPEA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (114901,'OBRA SOCIAL DE OFICIALES PELUQUEROS Y PEINADORES DE ROSARIO','OSOFPP DE ROSARIO');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115003,'OBRA SOCIAL DEL PERSONAL DE LA ACTIVIDAD PERFUMISTA','OSPAP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115102,'OBRA SOCIAL DE TRABAJADORES DE PRENSA DE BUENOS AIRES','OSTPBA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115201,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL PESCADO DE MAR DEL PLATA','OSPIP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115300,'OBRA SOCIAL DE PETROLEROS','OSPE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115409,'OBRA SOCIAL DEL PETROLEO Y GAS PRIVADO','OSPEGAP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115508,'OBRA SOCIAL DE PETROLEROS DE CORDOBA','O.S.PE.COR');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115607,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA PETROQUIMICA','OSPIP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115706,'OBRA SOCIAL PARA PILOTOS DE LINEAS AEREAS COMERCIALES Y REGULARES','OSPLA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (115805,'OBRA SOCIAL DEL PERSONAL DE FABRICAS DE PINTURA','UPFPARA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (116006,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL PLASTICO','OSPIP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (116105,'OBRA SOCIAL DE CAPATACES  ESTIBADORES PORTUARIOS','OSCEP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (116204,'OBRA SOCIAL DE PORTUARIOS ARGENTINOS','OSPA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (116709,'OBRA SOCIAL PORTUARIOS  PUERTO SAN MARTIN Y BELLA VISTA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (117207,'OBRA SOCIAL DEL PERSONAL DE PRENSA DE LA REPUBLICA ARGENTINA','OSPPRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (117405,'OBRA SOCIAL DEL PERSONAL DE PRENSA DE BAHIA BLANCA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (117702,'OBRA SOCIAL DEL PERSONAL DE PRENSA DE MAR DEL PLATA','OSPREN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (117801,'OBRA SOCIAL DEL PERSONAL DE PRENSA DE MENDOZA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118002,'OBRA SOCIAL DE EMPLEADOS DE PRENSA DE CORDOBA','OSEPC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118200,'OBRA SOCIAL DE AGENTES DE PROPAGANDA MEDICA DE LA REPUBLICA ARGENTINA','OSAPM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118309,'OBRA SOCIAL DE AGENTES DE PROPAGANDA MEDICA DE CORDOBA','OSAPMCBA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118408,'OBRA SOCIAL DE AGENTES DE PROPAGANDA MEDICA DE ENTRE RIOS','OSAPMER');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118507,'OBRA SOCIAL DE AGENTES DE PROPAGANDA MEDICA DE ROSARIO','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118606,'OBRA SOCIAL DEL PERSONAL DE LA PUBLICIDAD','OSPP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118705,'OBRA SOCIAL DEL PERSONAL DE INDUSTRIAS QUIMICAS Y PETROQUIMICAS','OSPIQYP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118804,'OBRA SOCIAL DE RECIBIDORES DE GRANOS Y ANEXOS','OSRGA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (118903,'OBRA SOCIAL DEL PERSONAL DE RECOLECCION Y BARRIDO DE ROSARIO','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (119005,'OBRA SOCIAL DEL PERSONAL DE REFINERIAS DE MAIZ','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (119203,'OBRA SOCIAL DE RELOJEROS Y JOYEROS','OSRJA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (119302,'OBRA SOCIAL DEL PERSONAL RURAL Y ESTIBADORES DE LA REPUBLICA ARGENTINA','OSPRERA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (119500,'OBRA SOCIAL DEL PERSONAL DE LA SANIDAD ARGENTINA','OSPSA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (119609,'OBRA SOCIAL DEL PERSONAL DE INSTALACIONES SANITARIAS','OSPIS');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (119708,'OBRA SOCIAL DEL PERSONAL DE SEGURIDAD COMERCIAL, INDUSTRIAL E INVESTIGACIONES PRIVADAS','OSPSIP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (119906,'OBRA SOCIAL DE SERENOS DE BUQUES','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (120306,'OBRA SOCIAL DEL PERSONAL DE SUPERVISION DE LA EMPRESA SUBTERRANEOS DE BUENOS AIRES','OSPSESBA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (120405,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE LA EMPRESA SUBTERRANEOS DE BUENOS AIRES','OSPDESBA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (120504,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA  DEL TABACO','OSPIT');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (120603,'OBRA SOCIAL DE EMPLEADOS DEL TABACO DE LA REPUBLICA ARGENTINA','OSETRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (120702,'OBRA SOCIAL DEL PERSONAL DE LAS TELECOMUNICACIONES DE LA REPUBLICA ARGENTINA','OSTEL');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (120801,'OBRA SOCIAL DE TRABAJADORES DE LAS COMUNICACIONES','OSTRAC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (120900,'OBRA SOCIAL DEL PERSONAL DE TELEVISION','OSPTV');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121002,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA TEXTIL','OSPIT');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121101,'OBRA SOCIAL DE EMPLEADOS TEXTILES Y AFINES','OSETYA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121309,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL TRACTOR','OSPIT');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121507,'OBRA SOCIAL DE LA INDUSTRIA DEL TRANSPORTE  AUTOMOTOR DE CORDOBA','OSITAC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121606,'OBRA SOCIAL CONDUCTORES DE TRANSPORTE COLECTIVO DE PASAJEROS','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121705,'OBRA SOCIAL DEL PERSONAL DE LA ACTIVIDAD DEL TURF','OSPAT');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121804,'OBRA SOCIAL CONDUCTORES DE TAXIS DE CORDOBA','OSTC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (121903,'OBRA SOCIAL DE VAREADORES','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122005,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL VESTIDO','OSPIV');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122104,'OBRA SOCIAL DE VIAJANTES VENDEDORES DE LA REPUBLICA ARGENTINA. (ANDAR)','OSVVRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122302,'OBRA SOCIAL DEL PERSONAL DE LA ACTIVIDAD VIAL','OSPA-VIAL');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122401,'OBRA SOCIAL DE  EMPLEADOS DE LA INDUSTRIA DEL VIDRIO','OSEIV');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122500,'OBRA SOCIAL DEL PERSONAL DE LA INDUSTRIA DEL VIDRIO','OSPIV');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122609,'OBRA SOCIAL DEL PERSONAL DE LA ACTIVIDAD VITIVINICOLA','OSPAV');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122807,'OBRA SOCIAL DEL PERSONAL DE VIGILANCIA Y SEGURIDAD COMERCIAL, INDUSTRIAL E INVESTIGACIONES PRIVADAS DE CORDOBA','OSPEVIC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (122906,'OBRA SOCIAL DEL PERSONAL DE ESTACIONES DE SERVICIO, GARAGES, PLAYAS Y LAVADEROS AUTOMATICOS DE LA PROVINCIA DE SANTA FE','OSPESGA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123008,'OBRA SOCIAL PARA EL PERSONAL DE ESTACIONES DE SERVICIO, GARAGES, PLAYAS DE ESTACIONAMIENTO, LAVADEROS AUTOMATICOS Y GOMERIAS DE LA REPUBLICA ARGENTINA','OSPES');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123107,'OBRA SOCIAL TALLERISTAS A DOMICILIO','OSTAD');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123305,'OBRA SOCIAL DEL PERSONAL DE SOCIEDADES DE AUTORES Y AFINES','OSPESA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123404,'OBRA SOCIAL DEL PERSONAL DE PRENSA DE ROSARIO','OSPRO');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123503,'OBRA SOCIAL DEL PERSONAL DE PRENSA DE TUCUMAN','OSPRENTUC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123602,'OBRA SOCIAL DE TRABAJADORES DE PERKINS ARGENTINA S.A.I.C','OSTP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123701,'OBRA SOCIAL DE PEONES DE TAXIS DE LA CAPITAL FEDERAL','OSPETAX');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (123909,'OBRA SOCIAL DE VENDEDORES AMBULANTES DE LA REPUBLICA ARGENTINA','OSVARA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (124001,'OBRA SOCIAL DE BOXEADORES AGREMIADOS DE LA REPUBLICA ARGENTINA','OSBARA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (124506,'OBRA SOCIAL DE TRABAJADORES DE LA INDUSTRIA DEL GAS','OSTIG');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (125103,'OBRA SOCIAL DE LOS PROFESIONALES UNIVERSITARIOS DEL AGUA Y LA ENERGIA ELECTRICA','OSPUAYE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (125301,'OBRA SOCIAL FEDERAL DE LA FEDERACION NACIONAL DE TRABAJADORES DE OBRAS SANITARIAS','OSFFENTOS');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (125509,'OBRA SOCIAL DE LA FEDERACION ARGENTINA DEL TRABAJADOR  DE LAS UNIVERSIDADES NACIONALES','OSFATUN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (125707,'OBRA SOCIAL UNION PERSONAL DE LA UNION DEL  PERSONAL CIVIL DE LA NACION','OSPCN');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (125905,'OBRA SOCIAL DE ARBITROS DEPORTIVOS DE LA REPUBLICA ARGENTINA','OSADRA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126007,'OBRA SOCIAL DE LA FEDERACION GREMIAL DEL PERSONAL DE  LA INDUSTRIA DE LA CARNE Y SUS DERIVADOS','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126106,'OBRA SOCIAL PARA LOS TRABAJADORES DE LA EDUCACION PRIVADA','OSTEP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126205,'OBRA SOCIAL DE LOS EMPLEADOS DE COMERCIO Y ACTIVIDADES CIVILES','OSECAC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126304,'OBRA SOCIAL SERVICIOS SOCIALES BANCARIOS','OSBA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126502,'OBRA SOCIAL DE LA CONFEDERACION DE OBREROS Y EMPLEADOS MUNICIPALES  ARGENTINA ( OSCOEMA )','OSCOEMA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126601,'OBRA SOCIAL DEL PERSONAL DE INDUSTRIAS  QUIMICAS Y PETROQUIMICAS DE ZARATE CAMPANA','OPZC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126700,'OBRA SOCIAL DEL PERSONAL DE LA ACTIVIDAD AZUCARERA TUCUMANA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126809,'OBRA SOCIAL DE CONDUCTORES DE REMISES Y AUTOS AL INSTANTE Y AFINES','OSCRAIA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (126908,'OBRA SOCIAL DE LOS MEDICOS DE LA CIUDAD DE BUENOS AIRES','OSMEDICA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127000,'OBRA SOCIAL DE TRABAJADORES DE ESTACIONES DE SERVICIO','OSTES');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127109,'OBRA SOCIAL DEL PERSONAL DE TELECOMUNICACIONES SINDICATO BUENOS AIRES','OSPETELCO');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127208,'OBRA SOCIAL DE MANDOS MEDIOS DE TELECOMUNICACIONES EN LA REPUBLICA ARGENTINA Y MERCOSUR','OSMMEDT');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127307,'OBRA SOCIAL DE TRABAJADORES VIALES Y AFINES DE LA REPUBLICA ARGENTINA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127406,'OBRA SOCIAL DE OBREROS Y EMPLEADOS TINTOREROS SOMBREREROS Y LAVADEROS DE LA REPUBLICA ARGENTINA','OSOETSYLARA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127505,'OBRA SOCIAL DE  LAS ASOCIACIONES DE EMPLEADOS DE FARMACIA','OSADEF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127604,'OBRA SOCIAL PARA EL PERSONAL DE OBRAS Y SERVICIOS SANITARIOS','OSOSS');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127703,'OBRA SOCIAL PERSONAL ESTACIONES DE SERVICIO,GARAGES,PLAYAS Y LAVADEROS DE LA PROVINCIA DEL CHACO','OSPESCHA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127802,'OBRA SOCIAL DE LUZ Y FUERZA DE LA PATAGONIA','OSLYF PATAGONIA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (127901,'OBRA SOCIAL DE PETROLEROS PRIVADOS','OS.PE.PRI');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128003,'OBRA SOCIAL DEL PERSONAL DE LA FEDERACION DE SINDICATOS DE LA INDUSTRIA QUIMICA Y PETROQUIMICA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128102,'OBRA SOCIAL DE LA UNION DE TRABAJADORES DEL INSTITUTO NACIONAL DE SERVICIOS SOCIALES PARA JUBILADOS Y PENSIONADOS DE LA REPUBLICA ARGENTINA','OSUTI');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128201,'OBRA SOCIAL DEL SINDICATO UNICO DE RECOLECTORES DE RESIDUOS Y BARRIDO DE CORDOBA','O.S.S.U.R.R.B.A.C');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128300,'OBRA SOCIAL PEONES DE TAXIS DE ROSARIO','O.S.PE.TAX.R');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128409,'OBRA SOCIAL DEL SINDICATO OBREROS Y EMPLEADOS DE EMPRESAS DE LIMPIEZA,SERVICIOS Y AFINES DE CORDOBA','OSSOELSAC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128508,'OBRA SOCIAL DE FARMACEUTICOS Y BIOQUIMICOS','OSFYB');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128607,'OBRA SOCIAL DE TRABAJADORES DEL PETROLEO Y GAS PRIVADO DEL CHUBUT','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128706,'OBRA SOCIAL DEL PERSONAL DE DRAGADO Y BALIZAMIENTO','OSPEDYB');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128805,'OBRA SOCIAL DEL PERSONAL ADUANERO DE LA REPUBLICA ARGENTINA','OSPAD');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (128904,'OBRA SOCIAL DE LOS TRABAJADORES ARGENTINOS DE CENTROS DE CONTACTOS','O.S.T.A.C.C,');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (129006,'OBRA SOCIAL DE LA ASOCIACION DEL PERSONAL SUPERIOR DE LA EMPRESA PROVINCIAL DE ENERGIA DE CORDOBA','O.S.A.P.S.E');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (200400,'OBRA SOCIAL DEL PERSONAL DE LA EMPRESA NACIONAL DE CORREOS Y TELEGRAFOS S.A. Y DE LAS  COMUNICACIONES DE LA REPULICA ARGENTINA','OSPEC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (300704,'OBRA SOCIAL CERAS JOHNSON','JOHNSON');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (302106,'OBRA SOCIAL PARA DIRECTIVOS, TECNICOS Y EMPLEADOS DE JOHN DEERE ARGENTINA','DITEM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (302304,'OBRA SOCIAL COMPANIA MINERA AGUILAR S.A','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (302809,'OBRA SOCIAL REFINERIAS DE MAIZ S.A.I.C.F.','OSRM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (303109,'OBRA SOCIAL SUPERCO','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (303307,'OBRA SOCIAL CABOT ARGENTINA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (303406,'OBRA SOCIAL DE SHELL ARGENTINA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (303703,'OBRA SOCIAL DEL PERSONAL DE PBBPOLISUR  SA  DE  BAHIA BLANCA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (303901,'OBRA SOCIAL DE FORD AGENTINA S.C.A','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (304003,'OBRA SOCIAL DE VOLKSWAGEN ARGENTINA S.A.','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400107,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE LAS EMPRESAS DE LA ALIMENTACION Y DEMAS ACTIVIDADES EMPRESARIAS','OPDEA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400206,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE LA INDUSTRIA AUTOMOTRIZ ARGENTINA','OSPREME');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400305,'OBRA SOCIAL COOPERATIVA LTDA.  DE ASISTENCIA MEDICA Y FARMACEUTICA, SERVICIOS ASISTENCIALES Y TURISMO DEL PERSONAL SUPERIOR DE LA INDUSTRIA DEL CAUCHO Y OTRAS ACTIVIDADES INDUSTRIALES','CAMPSIC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400404,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE LA INDUSTRIA CERVECERA Y MALTERA','SERVESALUD');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400503,'OBRA SOCIAL DE LA ASOCIACION DEL PERSONAL DE DIRECCION Y JERARQUICO DE LA INDUSTRIA DEL CIGARRILLO','APDJIC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400602,'OBRA SOCIAL DEL PERSONAL DIRECTIVO DE LA INDUSTRIA DE LA CONSTRUCCION','OSDIC');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400701,'OBRA SOCIAL CAMARA DE LA INDUSTRIA CURTIDORA ARGENTINA','OSCICA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400800,'OBRA SOCIAL DE EJECUTIVOS Y DEL PERSONAL DE DIRECCION DE EMPRESAS','OSDE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (400909,'OBRA SOCIAL DEL PERSONAL DE DIRECCION  ACCION SOCIAL DE EMPRESARIOS (A:S:E.)','ASE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (401001,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE LAS EMPRESAS QUE ACTUAN EN FRUTOS DEL PAIS','FRUTOS');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (401209,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE LA INDUSTRIA METALURGICA  Y DEMAS ACTIVIDADES EMPRESARIAS','OSIM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (401308,'OBRA SOCIAL PARA EL PERSONAL DE DIRECCION DE LA INDUSTRIA MADERERA','OSMAD');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (401605,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE LA INDUSTRIA PRIVADA DEL PETROLEO','OSDIPP');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (401704,'OBRA SOCIAL  DE EMPRESARIOS, PROFESIONALES Y MONOTRIBUTISTAS','OSDEPYM');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (401803,'OBRA SOCIAL ASOCIACION MUTUAL DEL PERSONAL DE PHILIPS ARGENTINA (AMPAR)','AMPAR');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (401902,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE PERFUMERIA E.W. HOPE','WHOPE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402004,'OBRA SOCIAL DEL PERSONAL DE DIRECCION DE SANIDAD LUIS PASTEUR','OSLPASTEUR');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402103,'OBRA SOCIAL ASOCIACION DEL PERSONAL DE DIRECCION DE LA INDUSTRIA SIDERURGICA','APDIS');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402202,'OBRA SOCIAL MUTUALIDAD INDUSTRIAL TEXTIL ARGENTINA','OSMITA');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402301,'OBRA SOCIAL ASOCIACION DEL PERSONAL SUPERIOR DE LA ORGANIZACION TECHINT','APSOT');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402400,'OBRA SOCIAL PARA EL PERSONAL DE DIRECCION DE LA INDUSTRIA VITIVINICOLA Y AFINES','OSEDEIV');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402509,'OBRA SOCIAL YPF','OSYPF');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402608,'OBRA SOCIAL ASOCIACION DE SERVICIOS SOCIALES PARA EMPRESARIOS Y PERSONAL DE DIRECCION DE EMPRESAS DEL COMERCIO, SERVICIOS, PRODUCCION, INDUSTRIA Y CIVIL (ASSPE )','ASSPE');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402707,'OBRA SOCIAL DE DIRECCION OSDO','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (402806,'OBRA SOCIAL DE DIRECCION DE LA ACTIVIDAD AEROCOMERCIAL  PRIVADA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (500807,'INSTITUTO NACIONAL DE SERVICIOS SOCIALES PARA JUBILADOS Y PENSIONADOS','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (600408,'ASOCIACION DE OBRAS SOCIALES DE COMODORO RIVADAVIA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (601104,'ASOCIACION GUALEGUAYCHU DE OBRAS SOCIALES','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (601203,'ASOCIACION DE OBRAS SOCIALES DE GUALEGUAY','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (602305,'ASOCIACION DE OBRAS SOCIALES DE ROSARIO','ADOS ROSARIO');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (603100,'ASOCIACION DE OBRAS SOCIALES DE TRELEW','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (700108,'OBRA SOCIAL DEL PERSONAL MUNICIPAL DE AVELLANEDA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (700801,'OBRA SOCIAL DEL PERSONAL MUNICIPAL DE LA MATANZA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (701002,'OBRA SOCIAL PARA EL  PERSONAL MUNICIPAL DE TRES DE FEBRERO','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (800105,'OBRA SOCIAL ATANOR S.A','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (800501,'OBRA SOCIAL ACEROS PARANA','');
+                INSERT INTO health_insurance (rnos, name, acronym) VALUES (900102,'OBRA SOCIAL DEL PERSONAL DE EMPRESAS FIAT Y EMPRESAS PEUGEOT CITROEN ARGENTINA','OSPEF Y EPCA');
+
+- changeSet:
+    id: renameColumn-snomed-pt
+    author: saguero
+    changes:
+    - renameColumn:
+        columnDataType: varchar(100)
+        newColumnName: pt
+        oldColumnName: fsn
+        tableName: snomed      
+                
+- changeSet:
+    id: internment_episode-addColumn-institution_id
+    author: lbergottini
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: institution_id
+            type: int
+            constraints:
+                nullable: true  
+        tableName: internment_episode
+    - addForeignKeyConstraint:
+        baseColumnNames: institution_id
+        baseTableName: internment_episode
+        constraintName: FK_institution_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: institution
+        validate: true                
+
+- changeSet:
+    id: user_role-pk-usr_role_institution
+    author: efernandez
+    dbms: postgresql
+    comment: Cambia la pk de user_role para que incluya a institution_id
+    changes:
+    - dropPrimaryKey:
+        tableName: user_role
+        constraintName: PK_user_role
+        dropIndex: true
+    - dropForeignKeyConstraint:
+        baseTableName: user_role
+        constraintName: FK_user_role__institution_id
+    - update:
+        tableName: user_role
+        columns:
+            name: institution_id
+            valueNumeric: -1
+        where: institution_id is null
+    - addDefaultValue:
+        tableName: user_role
+        columnName: institution_id
+        defaultValueNumeric: -1
+        defaultValueConstraintName: DV_user_role__instituion_id
+    - addPrimaryKey:
+        tableName: user_role
+        columnNames: role_id, user_id, institution_id
+        constraintName: PK_user_role
+        validate: true
+
+#-------------------------- Ajuste de PrimaryKey para coincidir con MSSQL y DB2 ------------------------
+- changeSet:
+    id: user_role-pk-usr_role_institution
+    author: saguero
+    dbms: "!postgresql"
+    comment: Cambia la pk de user_role para que incluya a institution_id
+    changes:
+    - dropPrimaryKey:
+        tableName: user_role
+        constraintName: PK_user_role
+        dropIndex: true
+    - dropForeignKeyConstraint:
+        baseTableName: user_role
+        constraintName: FK_user_role__institution_id
+    - update:
+        tableName: user_role
+        columns:
+            name: institution_id
+            valueNumeric: -1
+        where: institution_id is null
+    - addDefaultValue:
+        tableName: user_role
+        columnName: institution_id
+        defaultValueNumeric: -1
+        defaultValueConstraintName: DV_user_role__instituion_id
+    - addNotNullConstraint:
+        columnDataType: int
+        columnName: institution_id
+        tableName: user_role
+    - addPrimaryKey:
+        tableName: user_role
+        columnNames: role_id, user_id, institution_id
+        constraintName: PK_user_role
+        validate: true
+
+- changeSet:
+    id: dropNotNullConstraint-allergy_intolerance_category_id
+    author: etrapani
+    changes:
+    - dropNotNullConstraint:
+        columnDataType: varchar(20)
+        columnName: category_id
+        tableName: allergy_intolerance
+
+- changeSet:
+    id: dropNotNullConstraint-inmunization_administration_date
+    author: etrapani
+    changes:
+    - dropNotNullConstraint:
+        columnDataType: date
+        columnName: administration_date
+        tableName: inmunization
+
+
+- changeSet:
+    id: dropTable-evaluation_note_document
+    author: etrapani
+    changes:
+    - dropTable:
+        cascadeConstraints: true
+        tableName: evaluation_note_document
+
+- changeSet:
+    id: evolution_note_document table
+    author: etrapani
+    changes: 
+    - createTable: 
+        tableName: evolution_note_document
+        columns: 
+        - column:
+            constraints:
+                nullable: false
+            name: document_id
+            type: bigint
+        - column:
+            constraints:
+                nullable: false
+            name: internment_episode_id
+            type: int
+    - addPrimaryKey:
+        clustered: true
+        columnNames: document_id, internment_episode_id
+        constraintName: PK_evolution_note_document
+        tableName: evolution_note_document
+        validate: true
+    - addForeignKeyConstraint:
+        baseColumnNames: document_id
+        baseTableName: evolution_note_document
+        constraintName: FK_evolution_note_document_document_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: document
+        validate: true 
+    - addForeignKeyConstraint:
+        baseColumnNames: internment_episode_id
+        baseTableName: evolution_note_document
+        constraintName: FK_evolution_note_document_internment_episode_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: internment_episode
+        validate: true 
+
+
+- changeSet:
+    id: addForeignKeyConstraint-healthcare_professional_group_healthcare_professional_id
+    author: etrapani
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: healthcare_professional_id
+        baseTableName: healthcare_professional_group
+        constraintName: FK_healthcare_professional_group_healthcare_professional_id
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: healthcare_professional
+        validate: true
+
+                     
+- changeSet:
+    id: addColumn-health_condition-main
+    author: etrapani
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: main
+            type: boolean
+            defaultValue: ${boolean.false}
+            constraints:
+                nullable: true  
+        tableName: health_condition
+
+
+- changeSet: 
+    id: changePatient_type-metadata
+    author: ltelesco
+    changes:
+        - modifyDataType:
+            columnName: description
+            newDataType: varchar(30)
+            tableName: patient_type 
+
+
+- changeSet: 
+    id: addPatient_type
+    author: ltelesco
+    dbms: "!db2"
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO patient_type (id,description,active,audit) VALUES (7,'Permanente no validado',${boolean.true},${boolean.true});
+
+#----------------------------- Ajuste por palabra reservada 'audit' en DB2 ---------------------------
+- changeSet: 
+    id: addPatient_type
+    author: saguero
+    dbms: db2
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                INSERT INTO patient_type (id,description,active,"audit") VALUES (7,'Permanente no validado',${boolean.true},${boolean.true});
+
+- changeSet:  
+    id:  modifyDataType-snomed_pt   
+    author:  etrapani 
+    changes:  
+    -  modifyDataType:  
+        columnName:  pt  
+        newDataType: varchar(255)  
+        tableName:  snomed
+              
+              
+- changeSet:  
+    id:  modifyDataType-snomed_parent_fsn   
+    author:  etrapani 
+    changes:  
+    -  modifyDataType:  
+        columnName:  parent_fsn  
+        newDataType: varchar(255)  
+        tableName:  snomed
+        
+- changeSet:
+    id: modifying-allergy_intolerance_category-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE allergy_intolerance_category SET description = 'Alergia alimentaria' WHERE id='414285001';
+                UPDATE allergy_intolerance_category SET description = 'Alergia medicamentosa' WHERE id='416098002';
+                UPDATE allergy_intolerance_category SET description = 'Alergia ambiental' WHERE id='426232007';
+                UPDATE allergy_intolerance_category SET description = 'Alergia a agente biocida' WHERE id='402591008';
+
+- changeSet:
+    id: modifying-allergy_intolerance_clinical_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE allergy_intolerance_clinical_status SET description = 'Activo' WHERE id='55561003';
+                UPDATE allergy_intolerance_clinical_status SET description = 'Inactivo' WHERE id='73425007';
+                UPDATE allergy_intolerance_clinical_status SET description = 'Resuelto' WHERE id='723506003';
+
+- changeSet:
+    id: modifying-allergy_intolerance_verification_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE allergy_intolerance_verification_status SET description = 'Confirmado' WHERE id='59156000';
+                UPDATE allergy_intolerance_verification_status SET description = 'No confirmado' WHERE id='76104008';
+                UPDATE allergy_intolerance_verification_status SET description = 'Refutado' WHERE id='723511001';
+                UPDATE allergy_intolerance_verification_status SET description = 'Ingresado por error' WHERE id='723510000';
+
+- changeSet:
+    id: modifying-allergy_intolerance_verification_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE allergy_intolerance_verification_status SET description = 'Confirmado' WHERE id='59156000';
+                UPDATE allergy_intolerance_verification_status SET description = 'No confirmado' WHERE id='76104008';
+                UPDATE allergy_intolerance_verification_status SET description = 'Refutado' WHERE id='723511001';
+                UPDATE allergy_intolerance_verification_status SET description = 'Ingresado por error' WHERE id='723510000';
+
+- changeSet:
+    id: modifying-condition_problem_type-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE condition_problem_type SET description = 'Problema' WHERE id='55607006';
+
+- changeSet:
+    id: modifying-allergy_intolerance_verification_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE allergy_intolerance_verification_status SET description = 'Confirmado' WHERE id='59156000';
+                UPDATE allergy_intolerance_verification_status SET description = 'No confirmado' WHERE id='76104008';
+                UPDATE allergy_intolerance_verification_status SET description = 'Refutado' WHERE id='723511001';
+                UPDATE allergy_intolerance_verification_status SET description = 'Ingresado por error' WHERE id='723510000';
+
+- changeSet:
+    id: modifying-document_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE document_status SET description = 'Informe preliminar' WHERE id='445667001';
+                UPDATE document_status SET description = 'Informe final' WHERE id='445665009';
+                UPDATE document_status SET description = 'Informe enmendado' WHERE id='445664008';
+                UPDATE document_status SET description = 'Ingresado por error' WHERE id='723510000';
+
+- changeSet:
+    id: modifying-inmunization_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE inmunization_status SET description = 'Completo' WHERE id='255594003';
+                UPDATE inmunization_status SET description = 'No efectuado' WHERE id='385660001';
+                UPDATE inmunization_status SET description = 'Ingresado por error' WHERE id='723510000';
+
+
+- changeSet:
+    id: modifying-medication_statement_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE medication_statement_status SET description = 'Activo' WHERE id='55561003';
+                UPDATE medication_statement_status SET description = 'Completo' WHERE id='255594003';
+                UPDATE medication_statement_status SET description = 'Ingresado por error' WHERE id='723510000';
+                UPDATE medication_statement_status SET description = 'Administración de fármaco o medicamento' WHERE id='18629005';
+                UPDATE medication_statement_status SET description = 'Detenido' WHERE id='6155003';
+                UPDATE medication_statement_status SET description = 'Suspendido' WHERE id='385655000';
+                UPDATE medication_statement_status SET description = 'Desconocido' WHERE id='261665006';
+                UPDATE medication_statement_status SET description = 'Fármacos no ingeridos/tratamiento incompleto' WHERE id='266710000';
+
+- changeSet:
+    id: modifying-observation_status-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE observation_status SET description = 'Estado de registro' WHERE id='307827002';
+                UPDATE observation_status SET description = 'Preliminar' WHERE id='261420005';
+                UPDATE observation_status SET description = 'Final' WHERE id='261782000';
+                UPDATE observation_status SET description = 'Modificado' WHERE id='18307000';
+                UPDATE observation_status SET description = 'Corregido' WHERE id='33714007';
+                UPDATE observation_status SET description = 'Cancelado' WHERE id='89925002';
+                UPDATE observation_status SET description = 'Ingresado por error' WHERE id='723510000';
+                UPDATE observation_status SET description = 'Desconocido' WHERE id='261665006';
+
+- changeSet:
+    id: modifying-problem_type-data
+    comment: Actualizar descripcion
+    author: etrapani
+    context: "!schema-only"
+    changes:
+        - sql:
+            sql: |-
+                UPDATE problem_type SET description = 'Diagnóstico' WHERE id='439401001';
+                UPDATE problem_type SET description = 'Problema' WHERE id='55607006';
+                UPDATE problem_type SET description = 'Antecedente familiar con contexto explícito' WHERE id='57177007';

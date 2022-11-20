@@ -1,0 +1,199 @@
+{
+	"indicacion": {
+		"TITLE": "Indicaciones",
+		"internment-card": {
+			"TITLE": "Indicaciones de internación",
+			"TODAY": "Hoy, ",
+			"YESTERDAY": "Ayer, ",
+			"TOMORROW": "Mañana, ",
+			"INDICATION_DATE": "Fecha de indicación",
+			"buttons": {
+				"CONFIRM": "si, confirmar ",
+				"CANCEL": "no, ajustar fecha"
+			},
+			"sections": {
+				"DIET": "Dieta",
+				"PARENTERAL_PLAN": "Planes parenterales",
+				"PHARMACO": "Fármacos",
+				"OTHER_INDICATION": "Otras indicaciones",
+				"no-data": {
+					"DIET": "Sin dietas indicadas.",
+					"PARENTERAL_PLAN": "Sin planes parenterales indicados.",
+					"PHARMACO": "Sin fármacos indicados.",
+					"OTHER_INDICATION": "Sin otras indicaciones."
+				},
+				"label": {
+					"SUSPENDED": "Suspendida",
+					"INDICATED": "Indicada",
+					"REJECTED": "Rechazado",
+					"COMPLETED": "Completado",
+					"IN_PROGRESS": "En progreso"
+				},
+				"indication-extra-description": {
+					"DOSE": "Dosis:",
+					"VOL/BOLSA": "Vol/Bolsa:",
+					"VIA": "Vía:",
+					"INTERVAL": "Intervalo:",
+					"ONCE": "Única vez:",
+					"START_TIME": "Hora de inicio:",
+					"EVENT": "Ante evento:",
+					"SOLVENT": "Diluyente:",
+					"SOLVENT_DOSAGE": "Dosis diluyente:",
+					"DURATION": "Duración:",
+					"FLOW": "Flujo:",
+					"VOLUMEN_DAY": "Vol/Día:",
+					"PHARMACO": "Fármaco:",
+					"PHARMACO_DOSE":"Dosis fármaco:",
+					"ASSOCIATED_DIAGNOSIS":"Diagnóstico asociado:"
+				}
+			},
+			"menu-items": {
+				"PHARMACO": "Fármaco",
+				"DIET": "Dieta",
+				"PARENTERAL_PLAN": "Plan parenteral",
+				"DETAILS": "Ver detalle"
+			},
+			"dialogs": {
+				"diet":{
+					"TITLE": "agregar dieta",
+					"DESCRIPTION": "Descripción",
+					"messages": {
+						"ERROR": "Error al guardar una nueva dieta",
+						"SUCCESS": "La dieta se guardó exitosamente"
+					}
+				},
+				"other-indication":{
+					"TITLE": "agregar otra indicación",
+					"NOTE": "Notas",
+					"DETAIL": "Detalle",
+					"DETAIL-EVENT": "Detalle evento",
+					"SELECTION-TYPE-INDICATION": "Seleccionar tipo de indicación",
+					"INDICATION": "Indicación",
+					"INTERVAL": "Intervalo",
+					"FREQUENCY": "Frecuencia",
+					"OTHER-FREQUENCY": "Otra frecuencia",
+					"START-TIME": "Hora de inicio",
+					"EVERY":"Cada",
+					"frequencyOption": {
+						"UNSPECIFIED": "Sin especificar",
+						"INTERVALS": "Intervalo",
+						"ONCE": "Unica vez",
+						"AFTER-EVENT":" Ante un evento"
+					},
+					"messages": {
+						"ERROR": "Error al guardar una nueva indicación",
+						"SUCCESS": "La indicación se guardó exitosamente"
+					}
+				},
+				"parenteral-plan": {
+					"add-snomed-concept": {
+						"TITLE": "Agregar plan parenteral",
+						"SEARCH": "Plan parenteral"
+					},
+					"messages": {
+						"ERROR": "Error al guardar un nuevo plan parenteral",
+						"SUCCESS": "El plan parenteral se guardó exitosamente"
+					},
+					"TITLE": "Plan parenteral continuo",
+					"VOLUMEN": "vol/Bolsa",
+					"MILLILITERS": "ml",
+					"VIA": "vía",
+					"FREQUENCY": "frecuencia",
+					"DURATION": "duración",
+					"HOURS": "hs.",
+					"MINUTES": "min.",
+					"FLOW": "flujo",
+					"MILLILITERS_HOURS": "ml/h",
+					"DROPS": "hp. Gotas",
+					"VOLUMEN_DAY": "vol/Día",
+					"START_TIME": "Inicio de administración",
+					"ADD_PHARMACO": "Agregar fármaco",
+					"PHARMACO": "fármaco",
+					"DOSE": "dosis"
+				},
+				"pharmaco":{
+					"TITLE": "Agregar fármaco",
+					"PHARMACO": "Fármaco",
+					"DOSAGE": "Dosis",
+					"VIA": "Via",
+					"SOLVENT": "Diluyente",
+					"MILLILITERS": "ml",
+					"START-TIME": "Hora de inicio",
+					"OBSERVATIONS": "Observaciones",
+					"NO_OBSERVATIONS": "Sin observaciones",
+					"PATIENT_PROVIDED": "Aportada por el paciente",
+					"AWAY_FROM_FOOD": "Lejos de las comidas",
+					"FASTING": "Con ayuno",
+					"add-snomed-concept":{
+						"TITLE": "Agregar fármaco",
+						"SEARCH": "Fármaco"
+					},
+					"foodRelation":{
+						"TITLE": "Relación con las comidas",
+						"NEGATIVE": "No",
+						"FAR": "Lejos",
+						"FAST": "Ayuno"
+					},
+					"othersDetails":{
+						"TITLE": "Otros detalles",
+						"ASSOCIATED_DIAGNOSIS": "Diagnóstico asociado",
+						"POSITIVE": "Si"
+					},
+					"patientProvided":{
+						"TITLE": "Medicación aportada por el paciente",
+						"NEGATIVE": "No",
+						"POSITIVE": "Si"
+					},
+					"frequencyOption": {
+						"TITLE": "Administración",
+						"EVERY":"Cada",
+						"OTHER-FREQUENCY": "Otra frecuencia",
+						"UNSPECIFIED": "Sin especificar",
+						"INTERVALS": "Intervalo",
+						"ONCE": "Unica vez",
+						"DETAIL-EVENT": "Detalle evento",
+						"AFTER-EVENT":" Ante un evento"
+					},
+					"messages": {
+						"TITLE": "Para realizar una indicación el episodio debe tener un diagnóstico asociado.",
+						"CONTENT": "Por favor, agregué primero un diagnóstico en la evolución del episodio y luego realice la indicación.",
+						"OK_BUTTON": "Aceptar",
+						"ERROR": "Error al guardar un nuevo fármaco",
+						"SUCCESS": "El fármaco se guardó exitosamente"
+					}
+				}
+			}
+		},
+		"nursing-care": {
+			"TITLE": "Enfermería",
+			"TITLE_CARD": "Indicaciones de internación",
+			"sections": {
+				"TITLE_GENERAL": "Generales"
+			},
+			"status": {
+				"PENDING": "Pendiente"
+			}, 
+			"buttons": {
+				"TO_REGISTER": "registrar",
+				"REGISTER": "marcar como completado",
+				"UNDO": "Deshacer"
+			},
+			"dialogs": {
+				"register": {
+					"TITLE": "Completar registro",
+					"OBSERVATIONS": "Observaciones",
+					"INVALID_HOUR": "La hora no puede ser inferior al horario de inicio de administración.",
+					"INVALID_FUTURE": "No se puede elegir una hora mayor a la actual",
+					"messages": {
+						"SUCCESS": "Se completó la acción de la toma de enfermería correctamente",
+						"ERROR": "No se pudo completar la acción de la toma de enfermería correctamente."
+					}
+				},
+				"reject": {
+					"TITLE": "Rechazar y definir motivo",
+					"SUBTITLE": "Ingrese el motivo por el que la indicación no puede completarse."
+				}
+			}
+		}
+	}
+}

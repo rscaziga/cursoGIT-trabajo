@@ -1,0 +1,15 @@
+@import "~@angular/material/theming";
+
+@mixin app-detail-box($theme) {
+    $palette: map-get($theme, primary);
+
+    app-detail-box {
+        mat-card.mat-card {
+            background-color: mat-color($palette, 25);
+
+            span.value {
+                color: mat-color($palette, default);
+            }
+        }
+    }
+}

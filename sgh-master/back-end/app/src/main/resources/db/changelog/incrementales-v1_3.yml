@@ -1,0 +1,21 @@
+databaseChangeLog: 
+    - logicalFilePath: incrementales-v1_3 
+
+    - changeSet:        
+        id: dropNotNullConstraint-appointment-phone-number
+        author: tmedina
+        changes:
+        - dropNotNullConstraint:
+            columnDataType: varchar
+            columnName: phone_number
+            tableName: appointment
+    
+    - changeSet:
+        id: update-reason-description-length
+        author: tmedina
+        changes:
+            - modifyDataType:
+                columnName:  description  
+                newDataType:  varchar(255)    
+                tableName:  reasons
+

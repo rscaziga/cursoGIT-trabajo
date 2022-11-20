@@ -1,0 +1,29 @@
+<div xmlns="http://www.w3.org/1999/xhtml">
+    <table>
+        <caption>Resumen de Vacunas administradas</caption>
+        <tr>
+            <th scope="col">Descripción</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Protocolo/Serie</th>
+            <th scope="col">Organización</th>
+            <th scope="col">Ubicación</th>
+        </tr>
+        <tbody>
+        <tr>
+            <td th:narrative="${resource.vaccineCode}"></td>
+            <td>
+                <th:block th:if="${not resource.statusElement.empty}" th:text="${resource.statusElement.value}"></th:block>
+            </td>
+            <td>
+                <th:block th:narrative="${resource.occurrenceDateTimeType}"></th:block>
+            </td>
+            <td>
+                <th:block th:if="${not #lists.isEmpty(resource.protocolApplied)}" th:text="${resource.protocolApplied[0].series}"></th:block>
+            </td>
+            <td th:text="${resource.location.reference}"></td>
+            <td th:text="${resource.location.reference}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

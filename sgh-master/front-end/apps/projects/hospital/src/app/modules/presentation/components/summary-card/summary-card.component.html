@@ -1,0 +1,23 @@
+<mat-card class="box">
+	<mat-card-header>
+		<mat-card-title>
+			<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+				<mat-icon fontSet="material-icons-outlined">{{ header.matIcon }}</mat-icon>
+				<span>{{ header.title | translate }}</span>
+			</div>
+		</mat-card-title>
+		<ng-container *ngIf="editable">
+			<button matTooltip="{{ tooltip | translate }}" mat-icon-button *appHasRole="canEdit"
+				(click)="openInNew.emit()">
+				<mat-icon fontSet="material-icons-outlined">add_circle_outlined</mat-icon>
+			</button>
+		</ng-container>
+		<ng-container *ngIf="menu">
+			<button matTooltip="{{ tooltip | translate }}" mat-icon-button [matMenuTriggerFor]="matMenu"
+				*appHasRole="canEdit">
+				<mat-icon fontSet="material-icons-outlined">add_circle_outlined</mat-icon>
+			</button>
+		</ng-container>
+	</mat-card-header>
+	<ng-content></ng-content>
+</mat-card>

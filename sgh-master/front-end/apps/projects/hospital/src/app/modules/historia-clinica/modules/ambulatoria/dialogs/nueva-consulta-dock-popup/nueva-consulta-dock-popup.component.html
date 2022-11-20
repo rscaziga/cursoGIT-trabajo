@@ -1,0 +1,221 @@
+<app-dock-popup [dockPopupRef]="dockPopupRef" [header]="{ title:'ambulatoria.paciente.nueva-consulta.TITLE' }">
+	<div body fxLayout="column" fxLayoutGap="20px">
+
+		<app-new-consultation-expansion-section id="specialty"
+			[title]="'ambulatoria.paciente.nueva-consulta.SPECIALTY' | translate" icon="medical_services"
+			[isEmpty]="!formEvolucion.value.clinicalSpecialty" [collapsed]="false" [hideBorder]="true">
+			<app-document-section>
+				<ng-container concept-form>
+					<div fxLayout="row" [formGroup]="formEvolucion">
+						<mat-form-field appearance="outline">
+							<mat-select id="clinicalSpecialtyId" name="clinicalSpecialty"
+								formControlName="clinicalSpecialty" (selectionChange)="setDefaultSpecialty()"
+								[attr.disabled]="fixedSpecialty">
+								<mat-option *ngFor="let clinicalSpecialty of this.specialties"
+									[value]="clinicalSpecialty">
+									<span class="mat-body">{{clinicalSpecialty.name}}</span>
+								</mat-option>
+							</mat-select>
+							<mat-error [translate]="'forms.REQUIRED'"></mat-error>
+						</mat-form-field>
+					</div>
+				</ng-container>
+			</app-document-section>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="motivo"
+			[title]="'ambulatoria.paciente.nueva-consulta.motivo.TITLE' | translate" icon="sms_failed"
+			[isEmpty]="motivoNuevaConsultaService.isEmpty()" [recommend]="true">
+			<div fxLayout="column" fxLayoutGap="2vh">
+				<app-titled-content-card *ngIf="!motivoNuevaConsultaService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.motivo.LIST_CARD_TITLE' }}">
+					<app-reason-list [service]="motivoNuevaConsultaService"></app-reason-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-reason-button" color="primary" class="add-button"
+						(click)="addReason()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.motivo.ADD' | translate }}
+					</button>
+				</div>
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="problemas"
+			[title]="'ambulatoria.paciente.nueva-consulta.problemas.TITLE' | translate" icon="error_outlined"
+			[isEmpty]="ambulatoryConsultationProblemsService.isEmpty()" [collapsed]="false" [recommend]="true">
+			<div fxLayout="column" fxLayoutGap="2vh">
+
+				<app-titled-content-card *ngIf="!ambulatoryConsultationProblemsService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.problemas.PROBLEMA' }}">
+					<app-problem-list [problemsService]="ambulatoryConsultationProblemsService"></app-problem-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-problem-button" color="primary" class="add-button"
+						(click)="addProblem()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.problemas.buttons.ADD' | translate }}
+					</button>
+				</div>
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="evolucion"
+			[title]="'ambulatoria.paciente.nueva-consulta.evolucion.TITLE' | translate" icon="chat"
+			[isEmpty]="!this.formEvolucion.value.evolucion" [collapsed]="false">
+			<app-document-section>
+				<ng-container concept-form>
+					<form [formGroup]="formEvolucion">
+						<mat-form-field appearance="outline">
+							<textarea matInput type="text" id="evolucion-input" name="evolucion"
+								formControlName="evolucion"
+								placeholder="{{'ambulatoria.paciente.nueva-consulta.evolucion.DESCRIPCION' | translate }}">
+							</textarea>
+						</mat-form-field>
+					</form>
+				</ng-container>
+			</app-document-section>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="datos_antropometricos"
+			[title]="'ambulatoria.paciente.nueva-consulta.datos-antropometricos.TITLE' | translate" icon="accessibility"
+			[fixedExpanded]="datosAntropometricosNuevaConsultaService.getShowPreloadedAnthropometricData()"
+			[isEmpty]="!datosAntropometricosNuevaConsultaService.hasAtLeastOneValueLoaded()"
+			[(collapsed)]="collapsedAnthropometricDataSection">
+
+			<app-datos-antropometricos-nueva-consulta
+				[showPreloadData]="datosAntropometricosNuevaConsultaService.getShowPreloadedAnthropometricData()"
+				[datosAntropometricosNuevaConsultaService]="datosAntropometricosNuevaConsultaService">
+			</app-datos-antropometricos-nueva-consulta>
+
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="antecedentes-familiares"
+			[title]="'ambulatoria.paciente.nueva-consulta.antecedentes-familiares.TITLE' | translate" icon="report"
+			[isEmpty]="antecedentesFamiliaresNuevaConsultaService.isEmpty()">
+			<div fxLayout="column" fxLayoutGap="2vh">
+
+				<app-titled-content-card *ngIf="!antecedentesFamiliaresNuevaConsultaService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.antecedentes-familiares.LIST_CARD_TITLE' }}">
+					<app-background-list [service]="antecedentesFamiliaresNuevaConsultaService"></app-background-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-family-history-button" color="primary" class="add-button"
+						(click)="addFamilyHistory()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.antecedentes-familiares.buttons.ADD' | translate }}
+					</button>
+				</div>
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="medications"
+			[title]="'ambulatoria.paciente.nueva-consulta.medicaciones.TITLE' | translate" icon="event_available"
+			[isEmpty]="medicacionesNuevaConsultaService.isEmpty()">
+			<div fxLayout="column" fxLayoutGap="2vh">
+
+				<app-titled-content-card *ngIf="!medicacionesNuevaConsultaService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.medicaciones.LIST_CARD_TITLE' }}">
+					<app-medication-list [service]="medicacionesNuevaConsultaService"></app-medication-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-medication-button" color="primary" class="add-button"
+						(click)="addMedication()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.medicaciones.ADD' | translate }}
+					</button>
+				</div>
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="procedimientos"
+			[title]="'ambulatoria.paciente.nueva-consulta.procedimientos.TITLE' | translate" icon="library_add"
+			[isEmpty]="procedimientoNuevaConsultaService.isEmpty()">
+			<div fxLayout="column" fxLayoutGap="2vh">
+				<app-titled-content-card *ngIf="!procedimientoNuevaConsultaService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.procedimientos.TABLE_TITLE' }}">
+					<app-procedure-list [service]="procedimientoNuevaConsultaService"></app-procedure-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-procedure-button" color="primary" class="add-button"
+						(click)="addProcedure()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.procedimientos.buttons.ADD' | translate }}
+					</button>
+				</div>
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="factores_de_riesgo"
+			[title]="'historia-clinica.factores-de-riesgo-form.TITLE' | translate" icon="favorite_outlined"
+			[fixedExpanded]="factoresDeRiesgoFormService.getShowPreloadedRiskFactorsData()"
+			[isEmpty]="!factoresDeRiesgoFormService.hasAtLeastOneValueLoaded()"
+			[(collapsed)]="collapsedRiskFactorsSection">
+
+			<app-factores-de-riesgo-form
+				[showPreloadData]="factoresDeRiesgoFormService.getShowPreloadedRiskFactorsData()"
+				[showRecomendation]="true" [factoresDeRiesgoFormService]="factoresDeRiesgoFormService"
+				[showTitle]="false">
+			</app-factores-de-riesgo-form>
+
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="alergias"
+			[title]="'ambulatoria.paciente.nueva-consulta.alergias.TITLE' | translate" icon="cancel"
+			[isEmpty]="alergiasNuevaConsultaService.isEmpty()">
+			<div fxLayout="column" fxLayoutGap="2vh">
+
+				<app-titled-content-card *ngIf="!alergiasNuevaConsultaService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.alergias.table.TITLE' }}">
+					<app-allergy-list [service]="alergiasNuevaConsultaService"></app-allergy-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-allergies-button" color="primary" class="add-button"
+						(click)="addAllergy()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.alergias.ADD' | translate }}
+					</button>
+				</div>
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="solicitud-referencia"
+			[title]="'ambulatoria.paciente.nueva-consulta.solicitud-referencia.TITLE' | translate" icon="forum"
+			[isEmpty]="ambulatoryConsultationReferenceService.isEmpty()">
+			<div fxLayout="column" fxLayoutGap="2vh">
+
+				<app-titled-content-card *ngIf="!ambulatoryConsultationReferenceService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.solicitud-referencia.REGISTERED_REQUEST' }}">
+					<app-reference-request-list [service]="ambulatoryConsultationReferenceService">
+					</app-reference-request-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-request-button" color="primary" class="add-button"
+						(click)="ambulatoryConsultationReferenceService.openReferenceDialog()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.solicitud-referencia.ADD_REQUEST' | translate }}
+					</button>
+				</div>
+
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<div #apiErrorsView>
+			<div id="validations" *ngIf="apiErrors?.length > 0">
+				<mat-card>
+					<mat-error class="mat-body-2" *ngFor="let error of apiErrors">{{ error }}</mat-error>
+				</mat-card>
+			</div>
+		</div>
+
+	</div>
+
+	<div actions id="buttons">
+		<div align="end">
+			<button class="uppercase" mat-raised-button color="primary" (click)="save()"
+				[disabled]="disableConfirmButton">
+				<span [translate]="'buttons.CONFIRM'"></span>
+			</button>
+		</div>
+	</div>
+</app-dock-popup>

@@ -1,0 +1,37 @@
+<div class="page" fxLayout="column">
+	<div fxLayout="column">
+		<section id="triage">
+			<app-triage (triageCategoryIdChange)="setTriageCategoryId($event)"
+				(doctorsOfficeIdChange)="setDoctorsOfficeId($event)">
+			</app-triage>
+		</section>
+
+		<form [formGroup]="riskFactorsForm">
+			<section id="risk-factors" fxLayout="column">
+				<app-factores-de-riesgo-form [factoresDeRiesgoFormService]="factoresDeRiesgoFormService">
+				</app-factores-de-riesgo-form>
+			</section>
+		</form>
+
+		<form [formGroup]="adultGynecologicalForm">
+			<section id="evaluation" fxLayout="column">
+				<h4 [translate]="'guardia.triage.EVALUATION'"></h4>
+				<mat-form-field fxFlex="100%" appearance="outline">
+					<textarea matInput placeholder="Descripción" formControlName="evaluation"
+						name="evaluation"></textarea>
+				</mat-form-field>
+			</section>
+		</form>
+
+	</div>
+
+	<div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="flex-end">
+		<button mat-stroked-button class="uppercase" (click)="back()">
+			<span [translate]="cancelLabel"></span>
+		</button>
+		<button mat-raised-button class="uppercase" color="primary" matBadgeColor="accent"
+			(click)="confirmAdultGynecologicalTriage()" [disabled]="disableConfirmButton">
+			<span [translate]="confirmLabel"></span>
+		</button>
+	</div>
+</div>

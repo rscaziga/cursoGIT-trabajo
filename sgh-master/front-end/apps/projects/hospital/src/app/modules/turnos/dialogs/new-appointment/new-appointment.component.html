@@ -1,0 +1,188 @@
+<div mat-dialog-title fxLayout="row" fxLayoutGap="10px">
+	<div class="mat-h2"
+		[translate]="data.overturnMode ? 'turnos.overturns.CREATE' : 'turnos.new-appointment.NEW_APPOINTMENT'"></div>
+	<div class="mat-h3" fxFlexAlign="end">{{data.date | viewDate}} {{data.hour | viewHourMinute}}</div>
+</div>
+
+<div mat-dialog-content>
+
+	<mat-horizontal-stepper [selectedIndex]="initialIndex" #stepper labelPosition="bottom">
+		<mat-step [stepControl]="formSearch" label="{{'turnos.new-appointment.STEP_1' | translate}}">
+			<mat-card class="mat-typography">
+				<form [formGroup]="formSearch" (ngSubmit)="search()">
+					<mat-card-content>
+						<div fxLayout="column">
+							<mat-form-field appearance="outline">
+								<mat-label>Tipo</mat-label>
+								<mat-select formControlName="identifType">
+									<mat-option id="identifType" name="identifType"
+										*ngFor="let type of identifyTypeArray" [value]="type.id">
+										{{type.description}}
+									</mat-option>
+								</mat-select>
+								<mat-error *ngIf="hasError(formSearch, 'required', 'identifType')">
+									<span translate="forms.REQUIRED"></span>
+								</mat-error>
+							</mat-form-field>
+							<mat-form-field appearance="outline">
+								<mat-label>Nro de documento</mat-label>
+								<input matInput type="text" id="identifNumber" name="identifNumber"
+									formControlName="identifNumber" placeholder="Nro de documento">
+								<mat-error *ngIf="hasError(formSearch, 'required', 'identifNumber')">
+									<span translate="forms.REQUIRED"></span>
+								</mat-error>
+								<mat-error *ngIf="hasError(formSearch, 'maxlength', 'identifNumber')"
+									translate="forms.MAX_LENGTH_ERROR"
+									[translateParams]="{max: VALIDATIONS.MAX_LENGTH.identif_number}">
+								</mat-error>
+							</mat-form-field>
+							<div class="padding-bottom">
+								<mat-label>Sexo</mat-label>
+								<div>
+									<mat-radio-group name="gender" id="gender" formControlName="gender">
+										<mat-radio-button id="genderButton_{{gender.id}}"
+											*ngFor="let gender of genderOptions" [value]="gender.id">
+											{{gender.description}}
+										</mat-radio-button>
+										<mat-error
+											*ngIf="isFormSubmitted && hasError(formSearch, 'required', 'gender') ">
+											<span translate="forms.REQUIRED"></span>
+										</mat-error>
+									</mat-radio-group>
+								</div>
+							</div>
+							<mat-form-field appearance="outline">
+								<mat-label translate="turnos.new-appointment.PATIENT_ID"></mat-label>
+								<input matInput type="number" id="patientId" name="patientId"
+									formControlName="patientId">
+							</mat-form-field>
+						</div>
+						<div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
+							<ng-container *appHasRole="['ADMINISTRATIVO']">
+								<button mat-flat-button [mat-dialog-close]="-1" color="primary"
+									(click)="goCreatePatient()" *ngIf="showAddPatient">
+									<span [translate]="'turnos.new-appointment.BUTTON_ADD_PATIENT'"></span>
+								</button>
+							</ng-container>
+							<button mat-flat-button color="primary" type="submit">
+								<span [translate]="'turnos.new-appointment.BUTTON_SEARCH'"></span>
+							</button>
+						</div>
+					</mat-card-content>
+				</form>
+			</mat-card>
+		</mat-step>
+
+		<mat-step [stepControl]="appointmentInfoForm" label="{{'turnos.new-appointment.STEP_2' | translate}}">
+			<mat-card class="mat-typography">
+				<mat-list class="mat-form-field-wrapper">
+					<mat-list-item id="patient" class="patient-data-list">
+						<mat-icon color="primary" mat-list-icon [inline]="true">person</mat-icon>
+						<div fxLayout="column">
+							<strong *ngIf="patient?.patientTypeId === TEMPORARY_PATIENT_ID"
+								translate="turnos.new-appointment.TEMPORARY_PATIENT"></strong>
+							<div fxLayout="row">
+								<span translate="turnos.new-appointment.PATIENT_ID"> </span>
+								<span>: {{patientId}}</span>
+							</div>
+							<span *ngIf="patient">
+								{{ mapToPersonIdentification(patient.personalDataDto) | personIdentification}}
+							</span>
+						</div>
+					</mat-list-item>
+				</mat-list>
+				<form [formGroup]="appointmentInfoForm">
+					<div fxLayout="column">
+						<mat-form-field appearance="outline">
+							<mat-label>Cobertura Médica </mat-label>
+							<mat-select formControlName="patientMedicalCoverage">
+								<mat-option id="medicalCoverage" name="medicalCoverage"
+									*ngFor="let patientMedicalCoverage of patientMedicalCoverages"
+									[value]="patientMedicalCoverage">
+									{{getFullMedicalCoverageText(patientMedicalCoverage)}}
+								</mat-option>
+								<mat-divider></mat-divider>
+								<mat-option (click)="openMedicalCoverageDialog()">
+									<span class="color-primary" [translate]="'Actualizar cobertura'"></span>
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+							<mat-form-field fxFlex="30%" appearance="outline">
+								<mat-label [translate]="'turnos.new-appointment.PHONE_PREFIX'"></mat-label>
+								<input matInput type="text" id="phonePrefix" name="phonePrefix"
+									formControlName="phonePrefix"
+									placeholder="{{'turnos.new-appointment.PHONE_PREFIX' | translate }}"
+									(keyup)="updatePhoneValidators()">
+								<mat-error *ngIf="hasError(appointmentInfoForm, 'required', 'phonePrefix')">
+									<span translate="forms.REQUIRED"></span>
+								</mat-error>
+								<mat-error *ngIf="hasError(appointmentInfoForm, 'maxlength', 'phonePrefix')"
+									translate="forms.MAX_LENGTH_ERROR" [translateParams]="{max: 10}">
+								</mat-error>
+							</mat-form-field>
+							<mat-form-field fxFlex="70%" appearance="outline">
+								<mat-label [translate]="'turnos.new-appointment.PHONE_NUMBER'"></mat-label>
+								<input matInput type="text" id="phoneNumber" name="phoneNumber"
+									formControlName="phoneNumber"
+									placeholder="{{'turnos.new-appointment.PHONE_NUMBER' | translate }}"
+									(keyup)="updatePhoneValidators()">
+								<mat-error *ngIf="hasError(appointmentInfoForm, 'required', 'phoneNumber')">
+									<span translate="forms.REQUIRED"></span>
+								</mat-error>
+								<mat-error *ngIf="hasError(appointmentInfoForm, 'maxlength', 'phoneNumber')"
+									translate="forms.MAX_LENGTH_ERROR" [translateParams]="{max: 20}">
+								</mat-error>
+							</mat-form-field>
+						</div>
+					</div>
+				</form>
+				<div fxLayout="row">
+					<button mat-stroked-button matStepperPrevious color="primary" (click)="toFirstStep()">
+						<span [translate]="'buttons.BACK'"></span>
+					</button>
+				</div>
+			</mat-card>
+		</mat-step>
+
+		<mat-step [stepControl]="associateReferenceForm" label="{{'turnos.new-appointment.STEP_3' | translate }}"
+			*ngIf="data.protectedAppointment">
+			<mat-card>
+				<form [formGroup]="associateReferenceForm">
+					<mat-form-field appearance="outline">
+						<mat-label>{{ 'turnos.new-appointment.ASSOCIATED_REFERENCE' | translate }}</mat-label>
+						<mat-select formControlName="reference" name="reference">
+							<mat-option *ngFor="let reference of referenceList; index as i" [value]="reference">
+								{{ reference.institution.name }}, {{ referenceDateViewList[i] }},
+								{{ reference.professionalFullName }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</form>
+				<div fxLayout="row">
+					<button mat-stroked-button matStepperPrevious color="primary">
+						<span [translate]="'buttons.BACK'"></span>
+					</button>
+				</div>
+			</mat-card>
+		</mat-step>
+	</mat-horizontal-stepper>
+</div>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
+	<button mat-stroked-button color="primary" [mat-dialog-close]="-1">
+		<span [translate]="'buttons.CANCEL'"></span>
+	</button>
+	<button mat-raised-button color="primary" *ngIf="showConfirmButton()" (click)="submit()"
+		[disabled]="isSubmitButtonDisabled">
+		<span [translate]="'buttons.CONFIRM'"></span>
+	</button>
+	<button (click)="stepper.next()" mat-raised-button type="button" color="primary"
+		*ngIf="data.protectedAppointment && stepper.selectedIndex === 1" [disabled]="disableNextToStep3()">
+		<span [translate]="'buttons.NEXT'"></span>
+	</button>
+	<button (click)="submit(true)" mat-raised-button type="button" color="primary"
+		*ngIf="data.protectedAppointment && stepper.selectedIndex === 2" [disabled]="disableConfirmButtonStep3()">
+		<span [translate]="'buttons.CONFIRM'"></span>
+	</button>
+</mat-dialog-actions>

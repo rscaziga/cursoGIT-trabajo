@@ -1,0 +1,231 @@
+databaseChangeLog:
+- include:
+    file: multivendor.yml
+    relativeToChangelogFile: true
+- include:
+    file: baseline.yml
+    relativeToChangelogFile: true
+- include:
+    file: incrementales-v0_1_1.yml
+    relativeToChangelogFile: true
+- include:
+    file: incrementales-v0_1_2.yml
+    relativeToChangelogFile: true
+- include:
+    file: incrementales-v0_1_3.yml
+    relativeToChangelogFile: true
+- include:
+    file: incrementales-v0_1_4.yml
+    relativeToChangelogFile: true
+- include:
+    file: incrementales-v0_2.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v0_3.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v0_4.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v0_5.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v0_6.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v0_7.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_1.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_2.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_3.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_4.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_5.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_6.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_7.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_8.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_9.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_10.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_11.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_12.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_13.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_14.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_15.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_16.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_17.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_18.yml
+    relativeToChangelogFile: true
+- include:
+    file: incrementales-v1_19.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_20.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_21.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_22.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_23.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_24.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_25.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_26.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_27.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_28.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_29.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_30.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_31.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_32.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_33.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_34.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_35.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_36.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_37.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_38.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_39.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_40.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_41.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_42.yml
+    relativeToChangelogFile: true
+
+
+- include:
+    file: incrementales-v1_43.yml
+    relativeToChangelogFile: true
+
+# Los forks deberían agregar sus incrementales debajo de esta línea para evitar conflictos
+- include:
+    file: incrementales-v1_44.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_45.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_46.yml
+    relativeToChangelogFile: true
+
+- include:
+    file: incrementales-v1_47.yml
+    relativeToChangelogFile: true

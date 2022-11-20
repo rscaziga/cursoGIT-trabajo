@@ -1,0 +1,27 @@
+.location-badge {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	text-align: center;
+	padding: 40px 20px 30px;
+
+	.name {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 16px;
+
+		color: #192038; // Secundario
+	}
+
+	.address {
+		font-style: normal;
+		font-weight: normal;
+		font-size: 13px;
+		line-height: 16px;
+
+		color: #282828; // Text
+
+		opacity: 0.5;
+	}
+}
