@@ -1,0 +1,96 @@
+version: '3.6'
+services:
+  hsi-db:
+    image: postgres:11
+    container_name: hsi-db
+    environment:
+      POSTGRES_PASSWORD: Local123
+      POSTGRES_DB: hospitalDB
+      PGDATA: /data/pgdata
+    volumes:
+      - ./ci/dbapgsql/:/app/pg/
+      - ./.docker-data/postgres/:/data/
+    ports:
+      - "5432:5432"
+    restart: always
+
+  hsi-cubejs:
+    build: ./cubejs
+    container_name: hsi-cubejs
+    ports:
+        - 4000:4000
+    environment:
+      CUBEJS_DB_HOST: hsi-db
+
+  hsi-backend:
+    build: ./back-end
+    container_name: hsi-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DATABASE_IP_PORT: hsi-db:5432
+      CUBEJS_API_URL: http://hsi-cubejs:4000/cubejs-api/v1
+      DOCUMENT_ROOT_DIRECTORY: /var/hsi/documents
+      # AUTH_DOMAIN: test1-os.dev-env.lamansys.ar
+      # AUTH_SECURE: "false"
+    volumes:
+      - ./.docker-data/documents/:/var/hsi/documents
+    ports:
+      - "8080:80"
+
+  hsi-frontend:
+    build: ./front-end
+    container_name: hsi-frontend
+    environment:
+      API_IP_PORT: hsi-backend:80
+    ports:
+      - "4200:80"
+
+  hsi-mails:
+    image: mailhog/mailhog:latest
+    container_name: hsi-mails
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  hsi-mosquitto:
+    image: eclipse-mosquitto:2-openssl
+    container_name: hsi-mosquitto
+    ports:
+      - 1883:1883 #over tcp
+      - 9001:9001 #over websocket
+    networks:
+      - cedalo-platform
+    volumes:
+      - ./ci/mosquitto:/mosquitto/config
+      - ./.docker-data/mosquitto:/mosquitto/data
+
+  hsi-mosquitto-management-center:
+    image: cedalo/management-center:2
+    container_name: hsi-mosquitto-management-center
+    ports:
+      - 8088:8088
+    depends_on:
+      - hsi-mosquitto
+    networks:
+      - cedalo-platform
+    environment:
+      CEDALO_MC_BROKER_ID: mosquitto-2.0
+      CEDALO_MC_BROKER_NAME: Mosquitto 2.0
+      CEDALO_MC_BROKER_URL: mqtt://hsi-mosquitto:1883
+      CEDALO_MC_BROKER_USERNAME: CEDALO_BROKER_USER
+      CEDALO_MC_BROKER_PASSWORD: cedaloBrokerPassword
+      CEDALO_MC_USERNAME: cedaloadmin
+      CEDALO_MC_PASSWORD: cedaloadminPassword
+
+networks:
+  cedalo-platform:
+    name: cedalo-platform
+    driver: bridge
+
+
+volumes:
+  tmpdata:
+    driver_opts:
+      type: tmpfs
+      o: size=20485760
+      device: tmpfs

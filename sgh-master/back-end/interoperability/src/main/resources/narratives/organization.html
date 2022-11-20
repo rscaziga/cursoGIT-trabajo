@@ -1,0 +1,15 @@
+<div xmlns="http://www.w3.org/1999/xhtml">
+    <p><strong>Generated Narrative with Details</strong></p>
+    <p><strong>id: </strong><span th:utext="*{resource.id}"></span></p>
+    <p><strong>identifier: </strong><span th:utext="*{resource.identifier[0].value}"></span></p>
+    <p><strong>active: </strong><span th:utext="*{resource.active}"></span></p>
+    <p><strong>name: </strong><span th:utext="*{resource.name}"></span></p>
+    <p th:if="${resource.hasTelecom()}">
+        <strong>telecom: </strong>ph:<span th:utext="*{resource.telecom.get(0).value}"></span>
+    </p>
+    <div th:if="${not resource.address.empty}">
+        <p th:narrative="${resource.address[0]}"><strong>address: </strong></p>
+    </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+all:
+    hosts:
+        postgres_master: 
+            ansible_host: postgres
+            ansible_connection: docker
+            # ansible_host: IP
+            database_su_name: postgres
+            database_su_password: Local123
+        single_node:
+            ansible_host: nodo_a
+            ansible_connection: docker 
+            #ansible_host: IP
+    children:
+        web_load_balancers:
+            hosts:
+                single_node:
+        backservers:
+            hosts:
+                single_node:
+        frontservers:
+            hosts:
+                single_node:
+        migrator:
+            hosts:
+                maven: # debe poseer Maven instalado 
+                    ansible_connection: local #debe ser el "localhost" si o si por el momento
+        databases:
+            hosts:
+                postgres_master:
+    vars:
+        ansible_ssh_pipelining: true
+        database_port: 5432
+        sgh_database_user_name: sgh_test
+        sgh_database_user_password: sgh_test
+        sgh_database_name: sgh_test
+        token_secret:
+        recaptcha_secret_key:
+        recaptcha_site_key:
+        renaper_usuario:
+        renaper_clave:
+        federar_issuer:
+        federar_subject:
+        federar_sign_key:
+        snowstorm_id: 
+        snowstorm_key:

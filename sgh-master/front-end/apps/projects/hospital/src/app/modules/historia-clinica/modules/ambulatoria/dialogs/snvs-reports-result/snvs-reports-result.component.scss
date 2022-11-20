@@ -1,0 +1,35 @@
+@import '../../../../../../../assets/styles/mixins.scss';
+
+div.spinner {
+	@include centered-spinner;
+}
+
+.centered {
+	text-align: center;
+	width: 100%;
+}
+
+.vertical-margin {
+	margin: 24px 0;
+}
+
+.big-icon {
+	font-size: 50px;
+}
+
+.separation {
+	margin: 35px 0;
+}
+
+.margin-bottom-0 {
+	margin-bottom: 0;
+}
+
+.normal-weight {
+	@include font-weight-regular;
+}
+
+.bold {
+	@include font-weight-bold
+}
+

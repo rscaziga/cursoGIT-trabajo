@@ -1,0 +1,31 @@
+@import '../../../../../assets/styles/mixins';
+
+.mat-card {
+	.mat-card-subtitle{
+		margin-top: 10px;
+	}
+
+	mat-card-content {
+		@include card-content;
+	}
+
+	.mat-radio-button {
+		@include form-radio-button;
+	}
+
+}
+
+.search {
+	@include form-buttons;
+	margin-top: 25px;
+	width: auto;
+}
+
+.material-icons{
+	width: 30px;;
+}
+
+.errorScan{
+	position: relative;
+	width: 340px;
+}

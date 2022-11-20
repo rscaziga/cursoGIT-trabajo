@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.pladema.hospital</groupId>
+		<artifactId>hospital-parent</artifactId>
+		<version>${revision}</version>
+		<relativePath>./pom-parent.xml</relativePath>
+	</parent>
+	
+	<groupId>net.pladema</groupId>
+	<artifactId>hospital-managment</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+	<inceptionYear>2020</inceptionYear>
+	<modules>
+		<module>sgx-mqtt</module>
+		<module>sgx-shared</module>
+		<module>sgx-dashboards</module>
+		<module>sgx-backoffice</module>
+		<module>interoperability</module>
+		<module>extensions</module>
+		<module>odontology</module>
+		<module>clinic-history</module>
+		<module>hospital-api</module>
+		<module>app</module>
+		<module>sgx-auth</module>
+		<module>hospital-shared</module>
+		<module>immunization</module>
+		<module>hospital-public-api</module>
+		<module>nursing</module>
+		<module>reference-counter-ref</module>
+		<module>booking</module>
+	</modules>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>11</java.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+			<!-- Provides everything you need to write JUnit 5 Jupiter tests. -->
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>5.7.0</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine -->
+			<!-- Enables any legacy JUnit 3 and JUnit 4 tests you may have. Not needed for JUnit 5 tests. -->
+			<dependency>
+				<groupId>org.junit.vintage</groupId>
+				<artifactId>junit-vintage-engine</artifactId>
+				<version>5.7.0</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

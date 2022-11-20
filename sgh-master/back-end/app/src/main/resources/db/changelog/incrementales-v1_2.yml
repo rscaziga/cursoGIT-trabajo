@@ -1,0 +1,139 @@
+databaseChangeLog: 
+    - logicalFilePath: incrementales-v1_2 
+
+    - changeSet:
+        id: renameColumn-longitude-address
+        author: lmanterola
+        changes:
+        - renameColumn:
+            columnDataType: float
+            newColumnName: longitude
+            oldColumnName: longitud
+            tableName: address
+
+    - changeSet:
+        id: renameColumn-latitude-address
+        author: lmanterola
+        changes:
+        - renameColumn:
+            columnDataType: float
+            newColumnName: latitude
+            oldColumnName: latitud
+            tableName: address
+
+    - changeSet:
+        id:  dropView-v-institution-v2  
+        author:  lmanterola  
+        changes:  
+        -  dropView:    
+            viewName:  v_institution        
+
+    - changeSet:   
+        id:  createView-v-institution-V3-postgresql  
+        author:  lmanterola
+        dbms: postgresql
+        changes:  
+        -  createView: 
+            viewName:  v_institution 
+            fullDefinition:  false    
+            replaceIfExists:  true  
+            schemaName:  public  
+            selectQuery: |-
+                select	distinct ie.institution_id, ie.id as "internment_episode_id", ad.longitude, ad.latitude, diagnosis.covid_presumptive 					
+                from 	internment_episode ie 
+                join    institution i on ( ie.institution_id = i.id )
+                join    address ad on i.address_id = ad.id 
+                join    bed b on ie.bed_id = b.id
+                left join lateral( 	
+                    select 	case when hc.verification_status_id = '76104008' then true else false end as "covid_presumptive"
+                    from 	document_health_condition dhc 
+                            join document d on ( dhc.document_id = d.id)
+                            join internment_episode ieSub on ( d.source_id = ieSub.id )
+                            join health_condition hc on ( dhc.health_condition_id = hc.id )
+                    where 	ieSub.institution_id = i.id
+                            and ieSub.id = ie.id
+                            and hc.sctid_code = '186747009'
+                            and d.source_type_id = 0
+                    order by hc.updated_on desc
+                    limit	1
+                            
+                ) as diagnosis on true
+                where 	ie.status_id = 1 
+                        and b."free" = false
+    - changeSet:   
+        id:  createView-v-institution-V3
+        author: saguero
+        dbms: mssql
+        changes:
+        -  createView:
+            viewName:  v_institution
+            fullDefinition:  false
+            replaceIfExists:  true
+            selectQuery: |-
+                select	distinct ie.institution_id, ie.id as "internment_episode_id", ad.longitude, ad.latitude, CAST(diagnosis.covid_presumptive AS BIT) AS "covid_presumptive"					
+                from 	internment_episode ie 
+                join    institution i on ( ie.institution_id = i.id )
+                join    address ad on i.address_id = ad.id 
+                join    bed b on ie.bed_id = b.id
+                outer apply ( 	
+                    select 	top 1
+                            case when hc.verification_status_id = '76104008' then ${boolean.true} else ${boolean.false} end as "covid_presumptive"
+                    from 	document_health_condition dhc 
+                            join document d on ( dhc.document_id = d.id)
+                            join internment_episode ieSub on ( d.source_id = ieSub.id )
+                            join health_condition hc on ( dhc.health_condition_id = hc.id )
+                    where 	ieSub.institution_id = i.id
+                            and ieSub.id = ie.id
+                            and hc.sctid_code = '186747009'
+                            and d.source_type_id = 0
+                    order by hc.updated_on desc         
+                ) as diagnosis
+                where 	ie.status_id = 1 
+                        and b."free" = ${boolean.false}
+    
+    - changeSet:   
+        id:  createView-v-institution-V3
+        author: saguero
+        dbms: db2
+        changes:
+        -  createView:
+            viewName:  v_institution
+            fullDefinition:  false
+            replaceIfExists:  true
+            selectQuery: |-
+                select	distinct ie.institution_id, ie.id as internment_episode_id, ad.longitude, ad.latitude, CAST(diagnosis.covid_presumptive AS boolean) AS "covid_presumptive"				
+                from 	internment_episode ie 
+                join    institution i on ( ie.institution_id = i.id )
+                join    address ad on i.address_id = ad.id 
+                join    bed b on ie.bed_id = b.id
+                left join lateral ( 	
+                    select 	case when hc.verification_status_id = '76104008' then ${boolean.true} else ${boolean.false} end as covid_presumptive
+                    from 	document_health_condition dhc 
+                            join document d on ( dhc.document_id = d.id)
+                            join internment_episode ieSub on ( d.source_id = ieSub.id )
+                            join health_condition hc on ( dhc.health_condition_id = hc.id )
+                    where 	ieSub.institution_id = i.id
+                            and ieSub.id = ie.id
+                            and hc.sctid_code = '186747009'
+                            and d.source_type_id = 0
+                    order by hc.updated_on desc
+                    limit 1        
+                ) as diagnosis on true
+                where 	ie.status_id = 1 
+                        and b."free" = ${boolean.false}
+
+    - changeSet:
+        id: add-default-specialty-to-professionals
+        comment: Agregar profesión y especialidad por defecto a los profesionales creados sin ellas (Agente sanitario(5), Clínica médica(8))
+        author: lmanterola
+        context: "!schema-only"
+        changes:
+            - sql:
+                sql: |-
+                    INSERT INTO healthcare_professional_specialty(healthcare_professional_id, clinical_specialty_id, professional_specialty_id)
+                    SELECT hp.id, 8, 5
+                    FROM healthcare_professional hp
+                    LEFT JOIN healthcare_professional_specialty hps
+                    ON hps.healthcare_professional_id = hp.id
+                    WHERE hps.clinical_specialty_id IS NULL
+        

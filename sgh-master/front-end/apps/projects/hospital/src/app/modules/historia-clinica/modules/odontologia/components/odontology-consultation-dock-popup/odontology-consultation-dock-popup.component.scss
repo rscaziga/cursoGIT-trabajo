@@ -1,0 +1,59 @@
+@import '../../../../../../../assets/styles/mat-mixins.scss';
+
+::ng-deep .cdk-overlay-pane {
+	app-odontology-consultation-dock-popup {
+		width: 100%;
+	}
+}
+
+::ng-deep .cdk-overlay-pane.dock-popup-overlay {
+	background-color: white;
+}
+
+mat-form-field {
+	width: 100%;
+}
+
+.margin-bottom {
+	margin-bottom: 3vh;
+}
+
+.recomendado {
+	color: lightgray;
+	font-size: 13px;
+	font-weight: lighter;
+}
+
+span {
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-size: 14px;
+}
+
+.form_dental_pieces {
+	@include mat-form-field-background-white;
+
+	.mat-form-field {
+		width: 80%;
+
+		::ng-deep .mat-form-field-wrapper {
+			padding-bottom: 0;
+		}
+	}
+}
+
+.mat-error {
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-size: 14px;
+}
+
+.add-button {
+	font-size: 16px;
+}
+
+mat-divider.mat-divider-horizontal.mat-divider-inset.separation {
+	margin: 10px 0;
+}
+
+.bold {
+	font-weight: 500;
+}

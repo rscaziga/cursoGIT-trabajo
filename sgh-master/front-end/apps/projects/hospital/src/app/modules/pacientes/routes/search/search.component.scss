@@ -1,0 +1,41 @@
+@import '../../../../../assets/styles/mixins';
+@import '../../../../../assets/styles/mat-mixins';
+
+.content {
+
+	mat-card-content {
+		@include card-content;
+	}
+
+	.mat-radio-button {
+		@include form-radio-button;
+	}
+
+	.mat-action-row {
+		@include form-buttons;
+		margin-top: 25px;
+	}
+
+	.white-bg-color {
+		@include mat-form-field-background-white;
+	}
+
+	.color-disabled {
+		color: rgba(0, 0, 0, 0.38);
+	}
+
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.table-container {
+	.new-patient-button {
+		@include form-buttons;
+
+		button {
+			margin-right: 0px;
+		}
+	}
+}

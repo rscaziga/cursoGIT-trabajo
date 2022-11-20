@@ -1,0 +1,72 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/mixins.scss";
+
+span {
+	float: left;
+	clear: left;
+}
+
+.header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+button {
+	margin-bottom: 25px;
+}
+
+.reports {
+	margin-top: 5%;
+	margin-bottom: 0%;
+}
+
+user-data {
+	width: 100%;
+}
+
+.no-information {
+	color: #a8a8a8;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.no-professions {
+	color: #a8a8a8;
+	line-height: 20px;
+	font-family: 15px, Roboto;
+	margin-top: 15px;
+}
+
+.data {
+	margin-top: 15px;
+}
+
+mat-card {
+	mat-card-header {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		.create-user {
+			margin: 0px;
+		}
+	}
+
+	.sub-title {
+		margin-top: 10px;
+	}
+}
+
+#triage-chip {
+    width: fit-content;
+    padding: 1.5px 8px;
+    border-radius: 5px;
+}
+
+#episode-state {
+    color: #009B68;
+}
+
+mat-card.box mat-card-content {
+    margin: 10px;
+}

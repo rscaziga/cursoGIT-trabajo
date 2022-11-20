@@ -1,0 +1,19 @@
+::ng-deep .cdk-overlay-pane {
+	app-anamnesis-dock-popup {
+		width: 100%;
+	}
+}
+
+::ng-deep .cdk-overlay-pane.dock-popup-overlay {
+	background-color: white;
+}
+
+form {
+	mat-card.datos-antropometricos-card {
+		width: 50%;
+	}
+	mat-form-field {
+		width: 100%;
+	}
+}
+

@@ -1,0 +1,9 @@
+
+<div *ngIf="isExchangeableTheme$ | async" fxLayout="row" fxLayoutAlign="end" [ngClass]="selectedTheme?.class">
+	<app-exchangeable-theme class="theme-button" (themeChanged)="selectedTheme = $event"> </app-exchangeable-theme>
+</div>
+
+<div [ngClass]="selectedTheme?.class">
+	<router-outlet></router-outlet>
+</div>
+

@@ -1,0 +1,44 @@
+all:
+    hosts:
+        postgres_master: 
+            ansible_host: IP
+            database_su_name: toBeChanged
+            database_su_password: toBeChanged
+    children:
+        web_load_balancers:
+            hosts:
+                lbweb: 
+                    ansible_host: IP
+        backservers:
+            hosts:
+                nodo_a: 
+                    ansible_host: IP
+                nodo_b: 
+                    ansible_host: IP
+        frontservers:
+            hosts:
+                nodo_a:
+                nodo_b:
+        migrator:
+            hosts:
+                maven: # debe poseer Maven instalado 
+                    ansible_connection: local #debe ser el "localhost" si o si por el momento
+        databases:
+            hosts:
+                postgres_master:
+    vars:
+        ansible_ssh_pipelining: true
+        database_port: 5432
+        sgh_database_user_name: sgh_test
+        sgh_database_user_password: sgh_test
+        sgh_database_name: sgh_test
+        recaptcha_secret_key:
+        recaptcha_site_key:
+	    token_secret:
+        renaper_usuario:
+        renaper_clave:
+        federar_issuer:
+        federar_subject:
+        federar_sign_key:
+        snowstorm_id: 
+        snowstorm_key:

@@ -1,0 +1,69 @@
+mat-card {
+	max-width: 420px;
+	margin: 15vh auto;
+}
+mat-card-title{
+	padding: 20px;
+}
+
+.mat-icon {
+	vertical-align: middle;
+	padding-left: 10px;
+}
+.person-info{
+	padding-left: 8px;
+}
+.form {
+	min-width: 150px;
+	width: 100%;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+.mat-list{
+	padding-top: 30px;
+}
+.mat-card-actions{
+	padding-right: 17px;
+}
+
+.icon {
+	font-size: 96px;
+	margin-bottom: 45px;
+	margin-top: 50px;
+}
+
+.link{
+	cursor: pointer;
+}
+.link:hover{
+	text-decoration: underline;
+}
+
+.text-danger {
+	color: red;
+}
+
+
+.validation {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.125;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	letter-spacing: normal;
+	margin: -20px 15px 0 0;
+
+	.text-error {
+		color: #BDBDBD;
+	}
+
+	.text-valid {
+		color: #27AE60;
+	}
+}
+
+mat-icon {
+	font-size: 14px;
+	height: 14px;
+	width: 14px;
+	margin-right: 4px;
+}

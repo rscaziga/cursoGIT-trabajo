@@ -1,0 +1,105 @@
+<mat-card class="mat-typography">
+	<form [formGroup]="formSearch" #formDirectiveSearchForm="ngForm" (ngSubmit)="search(formDirectiveSearchForm)">
+		<mat-card-header>
+			<mat-card-title [translate]="'pacientes.home.find_add_section.TITLE'"></mat-card-title>
+			<mat-card-subtitle [translate]="'pacientes.home.SUBTITLE'">
+				{{ 'pacientes.home.SUBTITLE' | translate | patientToPerson }}
+			</mat-card-subtitle>
+		</mat-card-header>
+		<mat-card-content fxLayout="column" fxLayoutGap="20px">
+			<div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+				<mat-form-field appearance="outline" fxFlex="50%">
+					<mat-label>{{ 'pacientes.home.find_add_section.IDENTIFY_TYPE_LABEL' | translate }}</mat-label>
+					<mat-select formControlName="identifType" (openedChange)="onIdentifTypeChange()">
+						<mat-option id="identifType" name="identifType" *ngFor="let type of identifyTypeArray"
+							[value]="type.id">
+							{{type.description}}
+						</mat-option>
+					</mat-select>
+					<mat-error *ngIf="formSearchSubmitted && hasError(formSearch, 'required', 'identifType')">
+						<span translate="forms.REQUIRED"></span>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="outline" fxFlex="50%">
+					<mat-label>{{ 'pacientes.home.find_add_section.IDENTIFY_NUMBER_LABEL' | translate }}</mat-label>
+					<input matInput type="text" id="identifNumber" name="identifNumber" formControlName="identifNumber"
+						placeholder="Nro de documento">
+					<mat-error *ngIf="hasError(formSearch, 'required', 'identifNumber')">
+						<span translate="forms.REQUIRED"></span>
+					</mat-error>
+					<mat-error *ngIf="hasError(formSearch, 'maxlength', 'identifNumber')"
+						translate="forms.MAX_LENGTH_ERROR" [translateParams]="{max: 11}">
+					</mat-error>
+					<mat-error *ngIf="hasError(formSearch, 'pattern', 'identifNumber')">
+						<span translate="forms.FORMAT_WHITOUT_BLANK_SPACES"></span>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div>
+				<mat-label>{{ 'pacientes.home.find_add_section.GENDER_LABEL' | translate }}</mat-label>
+				<div>
+					<mat-radio-group name="gender" id="gender" formControlName="gender">
+						<mat-radio-button id="genderButton_{{gender.id}}" *ngFor="let gender of genderOptions"
+							[value]="gender.id">
+							{{gender.description}}
+						</mat-radio-button>
+					</mat-radio-group>
+					<mat-error *ngIf="formSearchSubmitted && !messageOff && hasError(formSearch, 'required', 'gender')">
+						<span translate="forms.REQUIRED"></span>
+					</mat-error>
+				</div>
+			</div>
+			<div *appHasRole="['ADMINISTRATIVO']">
+				<section>
+					<mat-checkbox (change)="noIdentityChange()">
+						{{ 'pacientes.home.find_add_section.NO_IDENTITY' | translate }}
+					</mat-checkbox>
+				</section>
+				<mat-card-header *ngIf="noIdentity">
+					<mat-card-title [translate]="'pacientes.home.find_add_section.NO_IDENTITY'">
+					</mat-card-title>
+				</mat-card-header>
+				<mat-card-content *ngIf="noIdentity" fxLayout="row" fxLayoutGap="20px" fxLayout.lt-md="column"
+					fxLayoutGap.lt-md="0">
+					<mat-form-field appearance="outline" fxFlex="50">
+						<mat-label>{{ 'pacientes.home.find_add_section.SELECT_REASON_LABEL' | translate }}</mat-label>
+						<mat-select formControlName="IdentityVerificationStatus">
+							<mat-option id="IdentityVerificationStatus"
+								*ngFor="let cause of identityVerificationStatusArray" [value]="cause.id">
+								{{cause.description}}
+							</mat-option>
+						</mat-select>
+						<mat-error>
+							<span translate="forms.REQUIRED"></span>
+						</mat-error>
+					</mat-form-field>
+					<mat-form-field appearance="outline" fxFlex="50">
+						<mat-label>{{ 'pacientes.home.find_add_section.COMMENTS_LABEL' | translate }}</mat-label>
+						<textarea matInput cdkTextareaAutosize id="comments" cdkAutosizeMinRows="1"
+							cdkAutosizeMaxRows="5" formControlName="comments">
+						</textarea>
+					</mat-form-field>
+				</mat-card-content>
+			</div>
+			<div *appHasRole="['ADMINISTRATIVO','ADMINISTRADOR_INSTITUCIONAL_BACKOFFICE']">
+				<div class="search" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
+					<button mat-stroked-button color="primary" type="button"
+						(click)="openScanPatientDialog(formDirectiveSearchForm)" [disabled]="disableButtonScan">
+						<span class="material-icons" color="primary">crop_free</span>
+						<span [translate]="'pacientes.home.find_add_section.scan.BUTTON_SCAN'"></span>
+					</button>
+					<button mat-flat-button color="primary" type="submit" [disabled]="disableButtonConfirm">
+						<span [translate]="'pacientes.home.find_add_section.BUTTON_SEARCH'"></span>
+					</button>
+				</div>
+			</div>
+			<div id="messagesScan" fxLayout="column" fxLayoutGap="20px">
+				<span *ngIf="(patientInformationError == 0)"
+					[translate]="'pacientes.home.find_add_section.scan.messages.SUCCESS'"></span>
+				<mat-error class="errorScan" *ngIf="(patientInformationError == 1)">
+					<span [translate]="'pacientes.home.find_add_section.scan.messages.ERROR'"></span>
+				</mat-error>
+			</div>
+		</mat-card-content>
+	</form>
+</mat-card>

@@ -1,0 +1,112 @@
+<app-dock-popup [dockPopupRef]="dockPopupRef"
+	[header]="{ title:'ambulatoria.paciente.new-nursing-consultation.TITLE' }">
+	<div body fxLayout="column" fxLayoutGap="20px">
+
+		<app-new-consultation-expansion-section id="specialty"
+			[title]="'ambulatoria.paciente.new-nursing-consultation.SPECIALTY' | translate" icon="medical_services"
+			[isEmpty]="!formEvolucion.value.clinicalSpecialty" [collapsed]="false" [hideBorder]="true">
+			<app-document-section>
+				<ng-container concept-form>
+					<div fxLayout="row" [formGroup]="formEvolucion">
+						<mat-form-field appearance="outline">
+							<mat-select id="clinical_specialty_id" formControlName="clinicalSpecialty"
+								(selectionChange)="setDefaultSpecialty()" [attr.disabled]="fixedSpecialty">
+								<mat-option *ngFor="let clinicalSpecialty of this.specialties"
+									[value]="clinicalSpecialty">
+									<span class="mat-body">{{clinicalSpecialty.name}}</span>
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</ng-container>
+			</app-document-section>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="datos_antropometricos"
+			[title]="'ambulatoria.paciente.nueva-consulta.datos-antropometricos.TITLE' | translate" icon="accessibility"
+			[isEmpty]="!datosAntropometricosNuevaConsultaService.hasAtLeastOneValueLoaded()"
+			[(collapsed)]="collapsedAnthropometricDataSection">
+			<app-datos-antropometricos-nueva-consulta
+				[datosAntropometricosNuevaConsultaService]="datosAntropometricosNuevaConsultaService">
+			</app-datos-antropometricos-nueva-consulta>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="factores_de_riesgo"
+			[title]="'historia-clinica.factores-de-riesgo-form.TITLE' | translate" icon="favorite_outlined"
+			[isEmpty]="!factoresDeRiesgoFormService.hasAtLeastOneValueLoaded()"
+			[(collapsed)]="collapsedRiskFactorsSection">
+			<app-factores-de-riesgo-form [showRecomendation]="true" [showTitle]="false"
+				[factoresDeRiesgoFormService]="factoresDeRiesgoFormService">
+			</app-factores-de-riesgo-form>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="problem"
+			[title]="'ambulatoria.paciente.new-nursing-consultation.ASSOCIATED_PROBLEM' | translate"
+			icon="error_outlined" [isEmpty]="!formEvolucion.value.clinicalProblem" [collapsed]="false">
+			<app-document-section>
+				<ng-container concept-form>
+					<div fxLayout="row" [formGroup]="formEvolucion">
+						<mat-form-field appearance="outline">
+							<mat-select id="problem" formControlName="clinicalProblem" [attr.disabled]="fixedProblem">
+								<mat-option *ngFor="let clinicalProblem of this.problems" [value]="clinicalProblem">
+									<span class="mat-body"> {{clinicalProblem.snomed.pt | translate}}</span>
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</ng-container>
+			</app-document-section>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="procedures"
+			[title]="'ambulatoria.paciente.nueva-consulta.procedimientos.TITLE' | translate" icon="library_add"
+			[isEmpty]="procedimientoNuevaConsultaService.isEmpty()">
+			<div fxLayout="column" fxLayoutGap="2vh">
+				<app-titled-content-card *ngIf="!procedimientoNuevaConsultaService.isEmpty()"
+					title="{{ 'ambulatoria.paciente.nueva-consulta.procedimientos.TABLE_TITLE' }}">
+					<app-procedure-list [service]="procedimientoNuevaConsultaService"></app-procedure-list>
+				</app-titled-content-card>
+
+				<div>
+					<button mat-button type="button" id="add-procedure-button" color="primary" class="add-button"
+						(click)="addProcedure()">
+						+ {{ 'ambulatoria.paciente.nueva-consulta.procedimientos.buttons.ADD' | translate }}
+					</button>
+				</div>
+			</div>
+		</app-new-consultation-expansion-section>
+
+		<app-new-consultation-expansion-section id="evolucion"
+			[title]="'ambulatoria.paciente.nueva-consulta.evolucion.TITLE' | translate" icon="chat"
+			[isEmpty]="!formEvolucion.value.evolucion" [collapsed]="false">
+			<app-document-section>
+				<ng-container concept-form>
+					<form [formGroup]="formEvolucion">
+						<mat-form-field appearance="outline">
+							<textarea matInput type="text" id="evolucion_input" formControlName="evolucion"
+								placeholder="{{'ambulatoria.paciente.nueva-consulta.evolucion.DESCRIPCION' | translate }}">
+							</textarea>
+						</mat-form-field>
+					</form>
+				</ng-container>
+			</app-document-section>
+		</app-new-consultation-expansion-section>
+
+		<div #apiErrorsView>
+			<div id="validations" *ngIf="apiErrors?.length > 0">
+				<mat-card>
+					<mat-error class="mat-body-2" *ngFor="let error of apiErrors">{{ error }}</mat-error>
+				</mat-card>
+			</div>
+		</div>
+
+	</div>
+	<div actions id="buttons">
+		<div align="end">
+			<button class="uppercase" mat-raised-button color="primary" (click)="save()"
+				[disabled]="disableConfirmButton">
+				<span [translate]="'buttons.CONFIRM'"></span>
+			</button>
+		</div>
+	</div>
+</app-dock-popup>

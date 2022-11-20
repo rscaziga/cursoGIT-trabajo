@@ -1,0 +1,67 @@
+div {
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.subtitle {
+	font-style: normal;
+	font-weight: 500;
+	line-height: 14px;
+	letter-spacing: 0em;
+	text-align: left;
+	height: 5px;
+}
+
+.title {
+	font-size: 22px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 26px;
+	letter-spacing: 0em;
+	text-align: left;
+}
+
+.mat-dialog-actions{
+	margin-top: 15px;
+	margin-bottom: auto;
+	min-height: auto;
+}
+
+.subtitle-font-size{
+	font-size: 16px;
+}
+
+.subtitle-findings-procedures-font-size{
+	font-size: 13.5px;
+}
+
+.activate-button{
+	color: #2687C5;
+}
+
+.activate-button:hover{
+	text-decoration: underline;
+}
+
+.disable-button{
+	color: #9c9fa3;
+}
+
+.tooth-dialog{
+	position: relative;
+}
+
+.close{
+	transform: scale(1.0);
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.select-surfaces {
+	color: #A8A8A8;
+}
+
+.text-button{
+	font-size: 14px;
+	text-align: left;
+}

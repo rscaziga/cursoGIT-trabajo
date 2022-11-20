@@ -1,0 +1,247 @@
+<app-content width="full">
+	<section id="title" fxLayout="row" fxLayoutAlign="space-between">
+		<h2 class="page-title" [translate]="'ambulatoria.paciente.TITLE'"></h2>
+		<app-calendar-professional-view *appHasRole="['ESPECIALISTA_MEDICO', 'PROFESIONAL_DE_SALUD', 'ESPECIALISTA_EN_ODONTOLOGIA', 'ENFERMERO']"></app-calendar-professional-view>
+	</section>
+
+	<section id="content" fxLayout="column" fxLayoutGap="20px">
+		<app-patient-card *ngIf="personPhoto" [patient]="patient" [personalAdditionalInformation]="personInformation"
+			[personPhoto]="personPhoto" [showAdditionalInformation]="true"
+			[internmentEpisodeProcess]="internmentEpisodeProcess"
+			[emergencyCareEpisodeInProgress]="emergencyCareEpisodeInProgress?.inProgress">
+			<div info-content fxLayout="row" fxLayout.xs="column">
+				<div fxLayout="row">
+					<mat-divider class="header-divider" [vertical]="true"></mat-divider>
+					<div class="sided_spaced_content" *ngIf="bloodType?.length" fxLayout="column"
+						fxLayoutAlign="center center" fxLayoutGap="3px">
+						<span class="group-and-factor-properties">
+							{{ 'ambulatoria.paciente.card.GROUP_AND_FACTOR' | translate }}
+						</span>
+						<span class="group-and-factor-properties">
+							{{ 'ambulatoria.paciente.card.SANGUINEOUS' | translate }}
+						</span>
+						<h1 class="color-primary bold top_padded_content" id="blood-type">{{ bloodType }}</h1>
+					</div>
+					<div *ngIf="!bloodType" fxLayout="column" fxLayoutAlign="center center">
+						<span class="color-disabled no-blood-data">
+							{{ 'ambulatoria.paciente.card.WITHOUT_BLOOD_DATA' | translate }}
+						</span>
+						<h1 class="color-disabled bold top_padded_content">-</h1>
+					</div>
+					<mat-divider class="header-divider" [vertical]="true"></mat-divider>
+					<div id="allergy-container" fxLayout="row" fxLayoutAlign="center center">
+						<div *ngIf="patientAllergies.criticalAllergies?.length>0">
+							<div fxLayout="row"
+								*ngFor="let allergy of patientAllergies.criticalAllergies.slice(0,patientAllergies.limitAllergies)">
+								<div fxLayout="column">
+									<mat-icon class="color-warn allergy-icon" fontSet="material-icons-outlined">
+										block
+									</mat-icon>
+								</div>
+								<div fxLayout="column">
+									<div fxLayout="row">
+										<span class="allergy-item capitalize-first-letter">{{allergy.snomed.pt}}</span>
+									</div>
+								</div>
+							</div>
+							<div *ngIf="patientAllergies.criticalAllergies?.length > patientAllergies.limitAllergies">
+								<button class="allergies-button" (click)="patientAllergies.openAllergies()" mat-button
+									type="button" color="primary">
+									<span [translate]="'ambulatoria.paciente.card.MORE_CRITICAL_ALLERGIES'"
+										[translateParams]="{allergies: patientAllergies.criticalAllergies?.length-patientAllergies.limitAllergies}">
+									</span>
+								</button>
+							</div>
+						</div>
+						<div *ngIf="patientAllergies.criticalAllergies?.length==0">
+							<div fxLayout="row">
+								<div fxLayout="column">
+									<mat-icon class="color-disabled allergy-icon" fontSet="material-icons-outlined">
+										block
+									</mat-icon>
+								</div>
+								<div fxLayout="column">
+									<div fxLayout="row">
+										<span class="color-disabled">
+											{{ 'ambulatoria.paciente.card.NO_CRITICAL_ALLERGIES' | translate }}
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<mat-divider class="header-divider" [vertical]="true"></mat-divider>
+
+					<ng-container *ngIf="thereIsAppointmentCovarageInformation() else internmentCovarage">
+						<app-medical-coverage-summary-view
+							[title]="'ambulatoria.paciente.card.APPOINTMENT_COVERAGE_TITLE'"
+							[coverageInfo]="getSummaryCoverageInfo()">
+						</app-medical-coverage-summary-view>
+					</ng-container>
+					<ng-template #internmentCovarage>
+						<app-medical-coverage-summary-view
+							*ngIf="internmentEpisodeProcess?.id && internmentEpisodeProcess?.inProgress"
+							[title]="'ambulatoria.paciente.card.INTERNMENT_COVERAGE_TITLE'"
+							[coverageInfo]="getSummaryCoverageInfo()">
+						</app-medical-coverage-summary-view>
+					</ng-template>
+
+				</div>
+			</div>
+			
+			<div buttons-content fxLayout="column" fxLayoutGap="10px" fxLayout.xs="row" fxLayoutAlign="center center">
+				<app-clinical-history-actions id="actions"
+					[internmentEpisodeProcess]="internmentEpisodeProcess"
+					[patientId]="patientId"
+					(popUpOpen)="dialogRef = $event"
+					>
+				</app-clinical-history-actions>
+				<button mat-stroked-button color="primary" (click)="goToPatient()" btn-block>
+					{{ 'ambulatoria.paciente.card.buttons.SHOW_PATIENT' | translate | uppercase }}</button>
+			</div>
+		</app-patient-card>
+
+
+		<div class="flex-container" *ngIf="externalInstitutionsEnabled">
+			<div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center baseline"
+				fxLayoutAlign.lt-md="baseline end">
+				<div fxFlex="55%"></div>
+
+				<div fxLayout="column" fxFlex="15%">
+					<h5 class=uppercase [translate]="'ambulatoria.historia-clinica-externa.TITLE'"></h5>
+				</div>
+				<div fxLayout="column" fxFlex="25%">
+					<mat-form-field>
+						<mat-select [disabled]="!this.loaded" id="externalInstitutionId" name="externalInstitutionId"
+							(click)="this.externalInstitutionsClicked()"
+							[placeholder]="this.externalInstitutionPlaceholder">
+							<mat-option *ngFor="let externalInstitution of this.externalInstitutions"
+								[value]="externalInstitution.name"
+								(click)="this.loadExternalSummary(externalInstitution)">
+								{{externalInstitution.name}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="spinner" *ngIf="spinner" fxFlex="5%" fxLayoutGap="7px" fxLayoutAlign="baseline end">
+					<mat-spinner color="primary" diameter="20"></mat-spinner>
+				</div>
+			</div>
+		</div>
+
+		<mat-card id="tab_container" class="mat-typography">
+			<mat-card-content>
+				<mat-tab-group (selectedTabChange)="onTabChanged($event)"
+					*ngIf="hasInternmentEpisodeInThisInstitution !== undefined">
+					<mat-tab id="tab_resumen" *ngIf="!hasInternmentEpisodeInThisInstitution && hasHealthRelatedRole">
+						<ng-template mat-tab-label>
+							<span>{{ 'ambulatoria.paciente.resumen.TAB_LABEL' | translate | uppercase }}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-resumen [patientExternalSummary]="patientExternalSummary"></app-resumen>
+						</ng-template>
+					</mat-tab>
+					<mat-tab id="tab_internacion" *ngIf="hasInternmentEpisodeInThisInstitution && hasHealthRelatedRole">
+						<ng-template mat-tab-label>
+							<span>{{ 'ambulatoria.paciente.internacion.TAB_LABEL' | translate | uppercase }}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-internacion-paciente [internmentEpisodeInfo]="internmentEpisodeProcess">
+							</app-internacion-paciente>
+						</ng-template>
+					</mat-tab>
+					<mat-tab id="tab_indications" *ngIf="hasHealthRelatedRole || hasPharmacyStaffRole">
+						<ng-template mat-tab-label>
+							<span>{{ 'indicacion.TITLE' | translate | uppercase }}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<div *ngIf="hasInternmentEpisodeInThisInstitution">
+								<app-internment-indications-card [patientId]="patientId"
+									[epicrisisConfirmed]="epicrisisDoc?.confirmed"
+									[internmentEpisodeId]="internmentEpisodeProcess.id">
+								</app-internment-indications-card>
+							</div>
+							<app-card-medicaciones [patientId]="patientId"
+								[medicamentStatus]="medicamentStatus$ | async">
+							</app-card-medicaciones>
+						</ng-template>
+					</mat-tab>
+					<mat-tab id="tab_studies" *ngIf="hasHealthRelatedRole || hasPicturesStaffRole || hasLaboratoryStaffRole">
+						<ng-template mat-tab-label>
+							<span>{{ 'ambulatoria.paciente.studies.TAB_LABEL' | translate | uppercase }}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-card-estudios [patientId]="patientId"
+								   [epicrisisConfirmed]="epicrisisDoc?.confirmed"
+								   [diagnosticReportsStatus]="diagnosticReportsStatus$ | async"
+								   [categories]="studyCategories$ | async">
+							</app-card-estudios>
+							<app-card-indicaciones [patientId]="patientId" *ngIf="false"></app-card-indicaciones>
+						</ng-template>
+					</mat-tab>
+					<mat-tab id="tab_nursing" *ngIf="hasInternmentEpisodeInThisInstitution && showNursingSection">
+						<ng-template mat-tab-label *appHasRole="['ESPECIALISTA_MEDICO', 'PROFESIONAL_DE_SALUD', 'ENFERMERO', 'ESPECIALISTA_EN_ODONTOLOGIA', 'PERSONAL_DE_FARMACIA']">
+							<span>{{ 'ambulatoria.paciente.nursing.TAB_LABEL' | translate | uppercase }}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-nursing-care [internmentEpisodeId]="internmentEpisodeProcess.id"></app-nursing-care>
+						</ng-template>
+					</mat-tab>
+					<mat-tab id="tab_problemas" *ngIf="hasHealthRelatedRole">
+						<ng-template mat-tab-label>
+							<span>{{ 'ambulatoria.paciente.problemas.TAB_LABEL' | translate | uppercase }}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-problemas [nuevaConsultaRef]="dialogRef"
+								[internmentInProcess]="internmentEpisodeProcess">
+							</app-problemas>
+						</ng-template>
+					</mat-tab>
+					<mat-tab id="tab_vacunas" *ngIf="hasHealthRelatedRole">
+						<ng-template mat-tab-label>
+							<span>{{ 'ambulatoria.paciente.vacunas.TAB_LABEL' | translate | uppercase }}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-vacunas></app-vacunas>
+						</ng-template>
+					</mat-tab>
+					<mat-tab *ngFor="let extensionTab of extensionTabs$ | async" [id]="extensionTab.head.id">
+						<ng-template mat-tab-label>
+							<mat-icon>{{extensionTab.head.icon}}</mat-icon>
+							<app-label [label]="extensionTab.head.label"></app-label>
+						</ng-template>
+						<ng-template matTabContent>
+							<ng-container *ngIf="(extensionTab.body$ | async) as tabPage; else loading">
+								<app-page-layout [page]="tabPage"></app-page-layout>
+							</ng-container>
+						</ng-template>
+					</mat-tab>
+					<mat-tab id="tab_odontologia" *ngIf="odontologyEnabled && hasHealthRelatedRole">
+						<ng-template mat-tab-label>
+							<span>ODONTOLOGÍA</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-odontogram (isOpenOdontologyConsultation)="setStateConsultationOdontology($event)"
+								(consultationCompleted)="updateFields($event)"></app-odontogram>
+						</ng-template>
+					</mat-tab>
+					<mat-tab *ngFor="let extensionWCTab of extensionWCTabs$ | async" [id]="extensionWCTab.title">
+						<ng-template mat-tab-label>
+							<span>{{extensionWCTab.title | uppercase}}</span>
+						</ng-template>
+						<ng-template matTabContent>
+							<app-ui-external-component [params]="extensionWCTab">
+							</app-ui-external-component>
+						</ng-template>
+					</mat-tab>
+
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</section>
+
+</app-content>
+
+<ng-template #loading>
+	<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

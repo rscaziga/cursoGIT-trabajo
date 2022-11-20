@@ -1,0 +1,64 @@
+<ng-container [ngSwitch]="uiComponent.type">
+	<div *ngSwitchCase="TYPE_DEFINITIONS.columns">
+		<app-ui-component-list [list]="uiComponent.args.content" class="columns"></app-ui-component-list>
+	</div>
+	<div *ngSwitchCase="TYPE_DEFINITIONS.typography" >
+		<span [ngClass]="'mat-' + uiComponent.args.className">
+			{{uiComponent.args.value}}
+		</span>
+	</div>
+	<div *ngSwitchCase="TYPE_DEFINITIONS.link">
+		<a mat-raised-button color="primary" [href]="uiComponent.args.value" target="_blank">
+			<ng-container *ngIf="uiComponent.args.label">
+				<span *ngIf="uiComponent.args.label.key" [translate]="uiComponent.args.label.key"></span>
+				<span *ngIf="uiComponent.args.label.text">{{uiComponent.args.label.text}}</span>
+			</ng-container>
+		</a>
+	</div>
+	<div *ngSwitchCase="TYPE_DEFINITIONS.cubejs_dashboard">
+		<app-cubejs-dashboard
+			[content]="uiComponent.args.content"
+			[filters]="uiComponent.args.filters"
+		>
+		</app-cubejs-dashboard>
+	</div>
+	<div *ngSwitchCase="TYPE_DEFINITIONS.cubejs_chart">
+		<app-cubejs-chart
+			[query]="uiComponent.args.query"
+			[dateFormat]="uiComponent.args.dateFormat"
+			[showLegend]="uiComponent.args.showLegend"
+			[listOnTab]="listOnTab"
+		>
+		</app-cubejs-chart>
+	</div>
+	<div *ngSwitchCase="TYPE_DEFINITIONS.tabs">
+		<app-tabs [tabs]="uiComponent.args.tabs"></app-tabs>
+	</div>
+	<div *ngSwitchCase="TYPE_DEFINITIONS.html" [innerHTML]="valueAsHtml"></div>
+
+	<div *ngSwitchCase="TYPE_DEFINITIONS.code">
+		<code>{{uiComponent.args.value | json}}</code>
+	</div>
+
+	<div *ngSwitchCase="TYPE_DEFINITIONS.card">
+		<app-ui-card
+			[title]="uiComponent.args.title"
+			[content]="uiComponent.args.content"
+		></app-ui-card>
+	</div>
+
+	<div *ngSwitchCase="TYPE_DEFINITIONS.json">
+		<app-json
+			[content]="uiComponent.args.content"
+		></app-json>
+	</div>
+
+	<mat-divider *ngSwitchCase="TYPE_DEFINITIONS.divider" inset></mat-divider>
+
+	<div *ngSwitchDefault>
+		<span class="mat-title">
+			Componente "<code>{{uiComponent.type}}</code>"
+		</span>
+		<div>{{uiComponent | json}}</div>
+	</div>
+</ng-container>

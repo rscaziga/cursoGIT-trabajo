@@ -1,0 +1,13 @@
+@import "./modules/ambulatoria/ambulatoria-mixins.scss";
+@import "./modules/odontologia/odontologia-mixins.scss";
+@import "./modules/ambulatoria/modules/internacion/internacion-mixins.scss";
+@import "./components/include-previous-data-question/include-previous-data-question-theme.scss";
+@import "./modules/ambulatoria/modules/indicacion/indicacion-mixins.scss";
+
+@mixin historia-clinica-mixins($theme) {
+    @include ambulatoria-mixins($theme);
+    @include odontologia-mixins($theme);
+    @include internacion-mixins($theme);
+    @include background-primary($theme);
+    @include indicacion-mixins($theme);
+}
